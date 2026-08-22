@@ -1,0 +1,190 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Hero from "../components/Hero.astro";
+import LiveScores from "../components/LiveScores.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import PricingCard from "../components/PricingCard.astro";
+import ReferralBanner from "../components/ReferralBanner.astro";
+import UserReviewsSection from "../components/UserReviewsSection.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import SupportedDevices from "../components/SupportedDevices.astro";
+import CitiesList from "../components/CitiesList.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FAQSection from "../components/FAQSection.astro";
+import FeaturedGuides from "../components/FeaturedGuides.astro";
+import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import GroupsPopup from "../components/GroupsPopup.astro";
+import ExitPopup from "../components/ExitPopup.astro";
+import SocialPopup from "../components/SocialPopup.astro";
+import { DollarSign, ShieldCheck, Check, Sparkles, TrendingDown, ArrowRight, Zap } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Billig IPTV Sverige", url: "/billig-iptv" }
+];
+
+const cheapProductSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Billig IPTV Sverige — Prisvärda Abonnemang från 50 kr/mån",
+  "description": "Sveriges mest prisvärda och stabila IPTV. Spara tusentals kronor varje år med 4K streaming och direktsänd sport.",
+  "image": "https://iptv-sverige.org/favicon.svg",
+  "brand": {
+    "@type": "Brand",
+    "name": "IPTV Sverige"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "SEK",
+    "lowPrice": "89",
+    "highPrice": "600",
+    "offerCount": "4"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1450"
+  }
+};
+---
+
+<Layout 
+  title="Billig IPTV Sverige 2026 — Bästa Prisvärda Abonnemang från 50 kr/mån" 
+  description="Letar du efter billig IPTV i Sverige utan att kompromissa med kvalitet? Njut av 4K streaming, direktsänd sport i 60 FPS och svensk EPG från endast 50 kr/månad!"
+  schema={cheapProductSchema}
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/billig-iptv" />
+
+  <!-- Hero with Cheap IPTV Focus -->
+  <Hero 
+    h1Title="Billig IPTV Sverige — Marknadens Mest Prisvärda 4K Abonnemang Från 50 kr/mån"
+    subtitle="Varför betala 800+ kr/mån för traditionell kabel-TV när du kan få alla svenska och internationella kanaler, direktsänd sport i 60 FPS och tusentals filmer till en bråkdel av priset?"
+    badgeText="💰 SVERIGES MEST PRISVÄRDA IPTV • SPARA UPP TILL 80%"
+    primaryKeyword="Billig IPTV"
+  />
+
+  <!-- Interactive Savings Breakdown Card -->
+  <section class="py-12 relative overflow-hidden">
+    <div class="max-container">
+      <div class="rounded-3xl glass-card-glow border-2 border-emerald-500/40 p-8 sm:p-12 shadow-2xl max-w-4xl mx-auto space-y-8">
+        
+        <div class="text-center space-y-3">
+          <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <TrendingDown class="w-4 h-4" />
+            <span>Ekonomisk Kalkyl 2026</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-display">
+            Hur Mycket Sparar Du Med <span class="text-gradient-emerald">IPTV Sverige?</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+            Jämförelse av totalkostnad per år mellan ett traditionellt svenskt TV-abonnemang med sportpaket och vårt 12-månaders VIP-paket.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <!-- Traditional Cost Card -->
+          <div class="p-6 rounded-2xl bg-white/[0.03] border border-red-500/20 space-y-4">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span>Traditionellt TV-Paket</span>
+              <span class="text-red-400 font-bold">Dyrt &amp; Låst</span>
+            </div>
+            <div class="text-3xl sm:text-4xl font-black text-slate-300 font-display">
+              ~9 588 kr <span class="text-xs font-normal text-slate-400">/ år</span>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-center gap-2"><span>✕</span> 799 kr / månad för TV + Sport</li>
+              <li class="flex items-center gap-2"><span>✕</span> 12–24 månaders bindningstid</li>
+              <li class="flex items-center gap-2"><span>✕</span> Hyrbox &amp; startavgifter</li>
+            </ul>
+          </div>
+
+          <!-- IPTV Sverige Cost Card -->
+          <div class="p-6 rounded-2xl bg-emerald-500/10 border-2 border-emerald-500/50 space-y-4 relative overflow-hidden">
+            <div class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase">
+              Du Sparar 8 988 kr!
+            </div>
+            <div class="flex items-center justify-between text-xs text-emerald-400 font-bold">
+              <span>IPTV Sverige VIP</span>
+              <span>12 Månader</span>
+            </div>
+            <div class="text-3xl sm:text-4xl font-black text-white font-display">
+              600 kr <span class="text-xs font-normal text-emerald-400">/ år (50 kr/mån)</span>
+            </div>
+            <ul class="space-y-2 text-xs text-slate-200">
+              <li class="flex items-center gap-2 text-emerald-300"><Check class="w-3.5 h-3.5 text-emerald-400" /> Alla svenska favoritkanaler i 4K</li>
+              <li class="flex items-center gap-2 text-emerald-300"><Check class="w-3.5 h-3.5 text-emerald-400" /> Direktsänd sport i 60 FPS ingår</li>
+              <li class="flex items-center gap-2 text-emerald-300"><Check class="w-3.5 h-3.5 text-emerald-400" /> 0 kr bindningstid • Körs direkt i TV-app</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="text-center pt-2">
+          <a href="/#pricing" class="btn-primary py-4 px-8 text-sm font-bold shadow-xl shadow-emerald-500/30 inline-flex items-center gap-2">
+            <span>Se Alla Våra Billiga Paket (Från 50 kr/mån)</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Scores -->
+  <LiveScores />
+
+  <!-- Features Grid -->
+  <FeatureGrid 
+    title="Billig IPTV Utan Att Tumma På Stabiliteten"
+    subtitle="Medan billiga utländska servrar ofta laggar, levererar vi högsta prestanda tack vare lokala servrar i Stockholm."
+  />
+
+  <!-- Pricing Cards (12 Months prominently 600 SEK) -->
+  <PricingCard />
+
+  <!-- Reviews -->
+  <UserReviewsSection />
+
+  <!-- Process Steps -->
+  <ProcessSteps />
+
+  <!-- Supported Devices -->
+  <SupportedDevices />
+
+  <!-- Cities -->
+  <CitiesList />
+
+  <!-- Featured Guides -->
+  <FeaturedGuides />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- FAQ -->
+  <FAQSection 
+    title="Vanliga Frågor Om Billig IPTV i Sverige"
+    subtitle="Allt du behöver veta om priser, betalningsmetoder och varför våra abonnemang är så prisvärda."
+  />
+
+  <!-- Final CTA -->
+  <CTASection 
+    title="Börja Spara Tusentals Kronor Idag"
+    subtitle="Välj Sveriges mest prisvärda IPTV-abonnemang med omedelbar aktivering via Swish."
+    primaryBtnText="Välj Abonnemang Från 50 kr/mån"
+    secondaryBtnText="Testa Gratis i 24 Timmar"
+  />
+
+  <Footer slot="footer" />
+
+  <Fragment slot="widgets">
+    <FloatingWhatsApp />
+    <GroupsPopup />
+    <ExitPopup />
+    <SocialPopup />
+  </Fragment>
+</Layout>

@@ -1,0 +1,196 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Hero from "../components/Hero.astro";
+import LiveScores from "../components/LiveScores.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import PricingCard from "../components/PricingCard.astro";
+import ReferralBanner from "../components/ReferralBanner.astro";
+import UserReviewsSection from "../components/UserReviewsSection.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import SupportedDevices from "../components/SupportedDevices.astro";
+import CitiesList from "../components/CitiesList.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FAQSection from "../components/FAQSection.astro";
+import FeaturedGuides from "../components/FeaturedGuides.astro";
+import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import GroupsPopup from "../components/GroupsPopup.astro";
+import ExitPopup from "../components/ExitPopup.astro";
+import SocialPopup from "../components/SocialPopup.astro";
+import { Zap, Clock, ShieldCheck, CheckCircle2, MessageCircle, Sparkles, Tv, ArrowRight } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Testa IPTV Gratis (24h)", url: "/testa-iptv" }
+];
+
+const trialSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Testa IPTV Sverige Gratis 24 Timmar",
+  "description": "Begär ett kostnadsfritt 24h testkonto och upplev svensk IPTV i 4K UHD och 60 FPS utan bindningstid.",
+  "image": "https://iptv-sverige.org/images/basta-iptv-test-banner.svg",
+  "brand": {
+    "@type": "Brand",
+    "name": "IPTV Sverige"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK",
+    "availability": "https://schema.org/InStock",
+    "url": "https://iptv-sverige.org/testa-iptv"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1450"
+  }
+};
+---
+
+<Layout 
+  title="Testa IPTV Gratis 24 Timmar — Prova Sveriges Bästa IPTV 2026" 
+  description="Vill du testa IPTV gratis i 24 timmar? Få ett kostnadsfritt testkonto med 4K streaming, direktsänd sport i 60 FPS och svensk EPG. Aktivering inom 3 min via WhatsApp!"
+  schema={trialSchema}
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/testa-iptv" />
+
+  <!-- Hero Section Specifically for Free Trial -->
+  <Hero 
+    h1Title="Testa IPTV Gratis i 24 Timmar — Upplev Sveriges Bästa IPTV i 4K"
+    subtitle="Prova vårt kompletta kanal- och sportutbud helt utan kostnad eller förpliktelser. Få dina Xtream Codes och M3U-inloggningsuppgifter skickade direkt till WhatsApp inom 3 minuter."
+    badgeText="⚡ 24 TIMMARS KOSTNADSFRITT TESTKONTO"
+    primaryKeyword="Testa IPTV"
+  />
+
+  <!-- Dedicated Free Trial High-Converting Step Box -->
+  <section class="py-12 relative overflow-hidden">
+    <div class="max-container">
+      <div class="rounded-3xl glass-card-glow border-2 border-emerald-500/50 bg-gradient-to-r from-emerald-950/90 via-slate-900/95 to-emerald-950/90 p-8 sm:p-14 shadow-2xl text-center space-y-6 max-w-4xl mx-auto">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+          <Zap class="w-4 h-4 text-amber-400 animate-pulse" />
+          <span>Ingen Kreditupplysning • Inga Dolda Avgifter</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-black text-white font-display tracking-tight leading-tight">
+          Så Hämtar Du Ditt <span class="text-gradient-emerald">Gratis 24h Testkonto</span>
+        </h2>
+
+        <p class="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Vi vill att du ska se hur stabil vår tjänst är innan du bestämmer dig. Följ 3 enkla steg för att börja titta:
+        </p>
+
+        <!-- 3 Quick Steps Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-left">
+          
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-lg border border-emerald-500/30">
+              1
+            </div>
+            <h3 class="text-base font-bold text-white">Klicka på WhatsApp</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Öppna chatten med vår svensktalande support med ett klick.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-lg border border-emerald-500/30">
+              2
+            </div>
+            <h3 class="text-base font-bold text-white">Ange Din Enhet</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Berätta vilken TV eller app du vill använda (t.ex. Smart TV, TiviMate, Apple TV).
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-lg border border-emerald-500/30">
+              3
+            </div>
+            <h3 class="text-base font-bold text-white">Börja Titta Direkt</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Få inloggningskoder och installationsguide på under 3 minuter.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Big Instant CTA Button -->
+        <div class="pt-6">
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20i%2024%20timmar.%20Jag%20använder:%20[Smart%20TV%20/%20Apple%20TV%20/%20TiviMate%20/%20Mobil]."
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary py-4 px-10 text-base font-black shadow-2xl shadow-emerald-500/40 inline-flex items-center gap-2"
+          >
+            <MessageCircle class="w-5 h-5 text-slate-950" />
+            <span>Begär Gratis 24h Testkonto via WhatsApp</span>
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          <p class="text-xs text-slate-400 mt-3">
+            ⚡ Blixtsnabb svensk support svarar inom 1–2 minuter dygnet runt.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Scores -->
+  <LiveScores />
+
+  <!-- Features Grid -->
+  <FeatureGrid 
+    title="Vad Ingår i Ditt Gratis Testkonto?"
+    subtitle="Du får exakt samma VIP-åtkomst och maximala bildkvalitet som i våra betalda abonnemang."
+  />
+
+  <!-- Supported Devices -->
+  <SupportedDevices />
+
+  <!-- Pricing Cards for when they want to upgrade -->
+  <PricingCard />
+
+  <!-- Testimonials -->
+  <UserReviewsSection />
+
+  <!-- Step by step -->
+  <ProcessSteps />
+
+  <!-- Cities -->
+  <CitiesList />
+
+  <!-- Featured Guides -->
+  <FeaturedGuides />
+
+  <!-- Contact Form -->
+  <ContactForm />
+
+  <!-- FAQ -->
+  <FAQSection 
+    title="Vanliga Frågor Om Att Testa IPTV Gratis"
+    subtitle="Allt du behöver veta om vår 24 timmars provperiod och hur testkontot fungerar."
+  />
+
+  <!-- Final CTA -->
+  <CTASection 
+    title="Redo Att Uppgradera Efter Testet?"
+    subtitle="Njut av oavbruten svensk TV och sport från 50 kr/månad utan bindningstider."
+    primaryBtnText="Se Alla Abonnemang"
+    secondaryBtnText="Chatta Med Supporten"
+  />
+
+  <Footer slot="footer" />
+
+  <Fragment slot="widgets">
+    <FloatingWhatsApp />
+    <GroupsPopup />
+    <ExitPopup />
+    <SocialPopup />
+  </Fragment>
+</Layout>

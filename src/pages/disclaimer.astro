@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { AlertCircle, ShieldCheck } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Ansvarsfraskrivelse", url: "/disclaimer" }
+];
+---
+
+<Layout 
+  title="Ansvarsfraskrivelse — IPTV Sverige" 
+  description="Juridisk ansvarsfraskrivelse för iptv-sverige.org gällande teknisk förmedling och streamingteknik."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/disclaimer" />
+
+  <div class="py-16 md:py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center space-y-4 mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <AlertCircle class="w-3.5 h-3.5" />
+          <span>Juridisk Friskrivning</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+          Ansvarsfraskrivelse
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Senast uppdaterad: 2026-08-20 · iptv-sverige.org
+        </p>
+      </div>
+
+      <div class="rounded-3xl glass-card border border-white/10 p-8 sm:p-12 space-y-8 text-sm text-slate-300 leading-relaxed">
+        
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">1.</span> Allmän Informationsfriskrivning
+          </h2>
+          <p>
+            All information som publiceras på iptv-sverige.org tillhandahålls i pedagogiskt och informativt syfte. Även om vi gör vårt yttersta för att säkerställa att informationen är korrekt och uppdaterad, lämnar vi inga garantier avseende fullständighet eller teknisk felfrihet.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">2.</span> Tredjepartsappar & Hårdvara
+          </h2>
+          <p>
+            IPTV Sverige är en oberoende streaming- och abonnemangsförmedlare. Vi är inte anslutna till, sponsrade av, eller officiellt representanter för tredje parts applikationsutvecklare (såsom TiviMate, IPTV Smarters, XCIPTV) eller hårdvarutillverkare (såsom Apple, Samsung, LG, Formuler). Alla varumärken och logotyper tillhör sina respektive rättighetsinnehavare.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">3.</span> Internetanslutning & Prestanda
+          </h2>
+          <p>
+            Streamingtjänstens kvalitet och stabilitet (inklusive tillgång till 4K Ultra HD och 60 FPS) är beroende av användarens lokala nätverk, bandbredd och internetleverantör (ISP). IPTV Sverige kan inte hållas ansvarigt för buffring eller avbrott orsakade av lokal nätverksöverbelastning, otillräcklig Wi-Fi-täckning eller operatörsbegränsningar.
+          </p>
+        </section>
+
+        <section class="space-y-3 pt-4 border-t border-white/10">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">4.</span> Frågor & Kontakt
+          </h2>
+          <p>
+            Vid frågor om våra villkor eller juridiska riktlinjer, vänligen kontakta oss via <a href="mailto:contact@iptv-sverige.org" class="text-emerald-400 font-bold">contact@iptv-sverige.org</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

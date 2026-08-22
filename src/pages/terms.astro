@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { FileText, ShieldCheck, CheckCircle2, AlertCircle } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Användarvillkor", url: "/terms" }
+];
+---
+
+<Layout 
+  title="Användarvillkor — IPTV Sverige" 
+  description="Läs de allmänna användarvillkoren för abonnemang och streamingtjänster på IPTV Sverige."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/terms" />
+
+  <div class="py-16 md:py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center space-y-4 mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <FileText class="w-3.5 h-3.5" />
+          <span>Villkor & Avtal</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+          Allmänna Användarvillkor
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Senast uppdaterad: 2026-08-20 · Gäller för samtliga köp på iptv-sverige.org
+        </p>
+      </div>
+
+      <div class="rounded-3xl glass-card border border-white/10 p-8 sm:p-12 space-y-8 text-sm text-slate-300 leading-relaxed">
+        
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">1.</span> Allmänt & Godkännande
+          </h2>
+          <p>
+            Dessa allmänna villkor gäller mellan IPTV Sverige (”Leverantören”) och den person eller organisation (”Kunden”) som beställer ett digitalt streamingabonnemang via iptv-sverige.org eller våra officiella kanaler. Genom att slutföra en beställning godkänner kunden dessa villkor i sin helhet.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">2.</span> Tjänstebeskrivning & Leverans
+          </h2>
+          <p>
+            Tjänsten utgörs av digital förmedling och åtkomst till IPTV-strömmar via M3U-spellista och Xtream Codes API för personligt bruk på kompatibla mottagarenheter.
+          </p>
+          <p>
+            Leverans sker digitalt och helautomatiskt via e-post och WhatsApp inom 2–5 minuter efter bekräftad inbetalning.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">3.</span> Priser & Betalningsvillkor
+          </h2>
+          <p>
+            Samtliga priser anges i svenska kronor (SEK). Betalning sker i förskott för den valda perioden (1, 3, 6 eller 12 månader). Vi accepterar Swish, Klarna, VISA, Mastercard, Apple Pay samt kryptovaluta. Inga automatiska dolda förnyelser eller bindningstider tillämpas.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">4.</span> Kontosäkerhet & Begränsningar
+          </h2>
+          <p>
+            Ett standardabonnemang är avsett för en (1) samtidig anslutning om inte fleranslutningspaket uttryckligen har köpts. Delning av inloggningsuppgifter med obehöriga tredje parter är strikt förbjuden och kan leda till automatisk spärrning av serveråtkomsten.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">5.</span> Drifttid & Teknisk Garanti
+          </h2>
+          <p>
+            Vi tillhandahåller en serverinfrastruktur med ett mål om 99.9% upptid. Planerat tekniskt underhåll aviseras i förväg via vår officiella Telegram- och WhatsApp-kanal. Leverantören ansvarar inte för lokala avbrott som beror på kundens egen internetoperatör (ISP) eller routerinställningar.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">6.</span> Ångerrätt & 24-Timmars Garanti
+          </h2>
+          <p>
+            Eftersom tjänsten avser digitalt innehåll som levereras omedelbart efter betalning gäller vår särskilda <a href="/refund" class="text-emerald-400 font-bold underline">24-timmars återbetalningsgaranti</a>. Kunden har rätt till full återbetalning inom 24 timmar från beställningstillfället vid olösta tekniska fel. Efter 24 timmar är köpet bindande för den valda perioden.
+          </p>
+        </section>
+
+        <section class="space-y-3 pt-4 border-t border-white/10">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">7.</span> Tillämplig Lag & Tvister
+          </h2>
+          <p>
+            Dessa villkor tolkas och tillämpas i enlighet med svensk lagstiftning. Eventuella tvister ska i första hand lösas i samförstånd genom kontakt med vår kundservice via e-post (<a href="mailto:contact@iptv-sverige.org" class="text-emerald-400">contact@iptv-sverige.org</a>) eller WhatsApp.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

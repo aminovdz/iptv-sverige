@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { Users, Gift, Share2, CheckCircle2, Sparkles, MessageCircle, ArrowRight, ShieldCheck } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Referera & Tjäna", url: "/referral" }
+];
+
+const referralSteps = [
+  {
+    step: "01",
+    icon: Share2,
+    title: "Tipsa Din Vän",
+    description: "Berätta för din vän, granne eller kollega om IPTV Sverige och dela vår länk eller be dem nämna din e-postadress / ditt namn vid beställning."
+  },
+  {
+    step: "02",
+    icon: Users,
+    title: "Vännen Tecknar Abonnemang",
+    description: "Din vän beställer valfritt 6- eller 12-månaders abonnemang och anger dig som referens till vår support via WhatsApp eller i kassan."
+  },
+  {
+    step: "03",
+    icon: Gift,
+    title: "Båda Får 1 Månad Gratis!",
+    description: "Så fort beställningen är bekräftad lägger vi automatiskt till 1 hel månad gratis på både ditt och din väns konto direkt!"
+  }
+];
+
+const referralFaqs = [
+  {
+    question: "Hur många vänner kan jag värva?",
+    answer: "Det finns absolut ingen övre gräns! Värvar du 12 vänner under ett år får du 12 månader gratis streaming — vilket innebär ett helt gratis år med IPTV Sverige."
+  },
+  {
+    question: "Vilka abonnemang kvalificerar för värvningsbonusen?",
+    answer: "Värvningsbonusen på 1 månad gratis tillämpas när din vän tecknar antingen ett 6-månaders eller 12-månaders abonnemang."
+  },
+  {
+    question: "Hur registrerar jag att jag har tipsat en vän?",
+    answer: "Skicka helt enkelt ett kort meddelande till vår support på WhatsApp med din väns ordernummer eller namn, så aktiverar vi din bonusmånad omedelbart."
+  }
+];
+---
+
+<Layout 
+  title="Referera En Vän & Få 1 Månad Gratis — IPTV Sverige Värvningsprogram" 
+  description="Tipsa dina vänner om IPTV Sverige! När din vän tecknar ett abonnemang får ni båda 1 månad extra gratis streaming. Inga gränser."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/referral" />
+
+  <div class="py-16 md:py-24 relative overflow-hidden">
+    <div class="max-container">
+      
+      <!-- Hero Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
+          <Gift class="w-3.5 h-3.5 text-amber-400" />
+          <span>Värva & Tjäna Gratis Månader</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-tight">
+          Tipsa En Vän — <span class="text-gradient-emerald">Båda Får 1 Månad Gratis!</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+          Gillar du IPTV Sverige? Dela med dig av upplevelsen till vänner och familj. För varje person som tecknar ett abonnemang belönar vi er båda med en hel månad gratis.
+        </p>
+      </div>
+
+      <!-- How it Works 3-Steps -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        {referralSteps.map((item) => (
+          <div class="rounded-3xl p-8 glass-card border border-white/10 hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all duration-300 shadow-md">
+                  <item.icon class="w-7 h-7" />
+                </div>
+                <span class="text-3xl font-black font-display text-white/10 group-hover:text-emerald-500/20 transition-colors">
+                  {item.step}
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                {item.title}
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-1.5 text-xs text-emerald-400 font-bold">
+              <CheckCircle2 class="w-4 h-4" />
+              <span>Garanterad bonusmånad</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Main Referral Action Banner -->
+      <div class="rounded-3xl glass-card-glow border-2 border-emerald-500/40 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-6 shadow-2xl">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white font-display">
+          Redo Att Värva En Vän Idag?
+        </h2>
+        <p class="text-sm text-slate-300 max-w-xl mx-auto">
+          Kontakta vår support på WhatsApp så genererar vi ett personligt värvningsmeddelande du kan skicka direkt till dina vänner.
+        </p>
+        <div class="pt-2">
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20ha%20mitt%20personliga%20värvningsmeddelande%20för%20att%20tipsa%20vänner."
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary py-4 px-8 text-sm font-extrabold shadow-xl shadow-emerald-500/30 inline-flex items-center gap-2"
+          >
+            <MessageCircle class="w-5 h-5" />
+            <span>Aktivera Värvning på WhatsApp</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Referral FAQs -->
+      <div class="mt-20 max-w-3xl mx-auto space-y-6">
+        <h3 class="text-2xl font-bold text-white text-center font-display">
+          Vanliga Frågor Om Värvningsprogrammet
+        </h3>
+        <div class="space-y-4">
+          {referralFaqs.map((faq) => (
+            <div class="rounded-2xl glass-card border border-white/10 p-6 space-y-2">
+              <h4 class="text-base font-bold text-white">{faq.question}</h4>
+              <p class="text-sm text-slate-300 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

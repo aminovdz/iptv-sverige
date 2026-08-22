@@ -1,0 +1,111 @@
+---
+import { CheckCircle2, Tv, X } from "lucide-astro";
+---
+
+<!-- Recent Activity Live Toast -->
+<div 
+  id="social-proof-toast" 
+  class="fixed bottom-6 left-6 z-40 hidden max-w-sm rounded-2xl p-4 glass-card-glow border border-emerald-500/40 bg-slate-950/95 shadow-2xl transition-all duration-500 transform translate-y-8 opacity-0"
+  role="status"
+  aria-live="polite"
+>
+  <button 
+    id="close-social-toast" 
+    type="button" 
+    class="absolute top-2 right-2 p-1 text-slate-500 hover:text-slate-200 transition-colors"
+    aria-label="Stäng notis"
+  >
+    <X class="w-3.5 h-3.5" />
+  </button>
+
+  <div class="flex items-center gap-3.5 pr-4">
+    <div class="relative shrink-0">
+      <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-slate-950 shadow-md">
+        <Tv class="w-5 h-5 stroke-[2.5]" />
+      </div>
+      <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-950 flex items-center justify-center text-slate-950">
+        <CheckCircle2 class="w-3 h-3 stroke-[3]" />
+      </div>
+    </div>
+
+    <div class="space-y-0.5">
+      <div class="text-xs font-bold text-white flex items-center gap-1.5">
+        <span id="toast-name">Lars K.</span>
+        <span class="text-slate-400 font-normal">från</span>
+        <span id="toast-city" class="text-emerald-400">Stockholm</span>
+      </div>
+      <div id="toast-action" class="text-[11px] text-slate-300">
+        Köpte precis <strong>12 Månader VIP</strong> med Swish
+      </div>
+      <div id="toast-time" class="text-[10px] text-slate-500">
+        För 4 minuter sedan · Verifierad kund
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const purchases = [
+    { name: "Lars K.", city: "Stockholm", action: "Köpte precis 12 Månader VIP (Swish)", time: "För 3 minuter sedan" },
+    { name: "Elin L.", city: "Göteborg", action: "Förnyade sitt 12 Månaders abonnemang", time: "För 7 minuter sedan" },
+    { name: "Stefan M.", city: "Malmö", action: "Aktiverade 24h Gratis Provperiod", time: "För 11 minuter sedan" },
+    { name: "Oscar B.", city: "Uppsala", action: "Köpte 6 Månader Standard (Klarna)", time: "För 14 minuter sedan" },
+    { name: "Henrik V.", city: "Västerås", action: "Köpte 12 Månader VIP (Swish)", time: "För 18 minuter sedan" },
+    { name: "Johanna N.", city: "Örebro", action: "Aktiverade IPTV på Apple TV 4K", time: "För 22 minuter sedan" },
+    { name: "Andreas P.", city: "Linköping", action: "Köpte 12 Månader VIP (Swish)", time: "För 26 minuter sedan" }
+  ];
+
+  let currentIndex = 0;
+  const toast = document.getElementById("social-proof-toast");
+  const nameEl = document.getElementById("toast-name");
+  const cityEl = document.getElementById("toast-city");
+  const actionEl = document.getElementById("toast-action");
+  const timeEl = document.getElementById("toast-time");
+  const closeBtn = document.getElementById("close-social-toast");
+
+  let isToastDismissed = false;
+
+  function showToast() {
+    if (!toast || isToastDismissed) return;
+    const item = purchases[currentIndex];
+    if (nameEl) nameEl.textContent = item.name;
+    if (cityEl) cityEl.textContent = item.city;
+    if (actionEl) actionEl.innerHTML = item.action;
+    if (timeEl) timeEl.textContent = `${item.time} · Verifierad kund`;
+
+    toast.classList.remove("hidden");
+    setTimeout(() => {
+      toast.classList.remove("translate-y-8", "opacity-0");
+      toast.classList.add("translate-y-0", "opacity-100");
+    }, 50);
+
+    // Hide after 6 seconds
+    setTimeout(() => {
+      hideToast();
+    }, 6000);
+
+    currentIndex = (currentIndex + 1) % purchases.length;
+  }
+
+  function hideToast() {
+    if (!toast) return;
+    toast.classList.remove("translate-y-0", "opacity-100");
+    toast.classList.add("translate-y-8", "opacity-0");
+    setTimeout(() => {
+      toast.classList.add("hidden");
+    }, 500);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      isToastDismissed = true;
+      hideToast();
+    });
+  }
+
+  // Initial trigger after 6 seconds, then rotate every 22 seconds
+  setTimeout(() => {
+    showToast();
+    setInterval(showToast, 22000);
+  }, 6000);
+</script>

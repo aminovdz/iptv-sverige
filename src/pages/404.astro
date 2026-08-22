@@ -1,0 +1,174 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { 
+  Home, 
+  Tv, 
+  Radio, 
+  Zap, 
+  Trophy, 
+  Sparkles, 
+  MessageCircle, 
+  ArrowRight, 
+  BookOpen, 
+  RotateCcw,
+  SignalZero,
+  ShieldCheck
+} from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "404 — Sidan Kunde Inte Hittas", url: "/404" }
+];
+---
+
+<Layout 
+  title="404 — Signal Förlorad | IPTV Sverige" 
+  description="Sidan eller kanalen du söker finns inte eller har flyttats. Återanslut till IPTV Sverige via startsidan eller se våra aktuella 4K abonnemang."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" />
+
+  <main class="py-16 md:py-28 relative overflow-hidden text-center">
+    
+    <!-- Background Ambient Radar Glow -->
+    <div class="absolute inset-0 pointer-events-none z-0">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[140px]"></div>
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-amber-500/5 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 space-y-10">
+      
+      <!-- PRO Signal Loss Visual Badge -->
+      <div class="relative inline-flex flex-col items-center justify-center">
+        
+        <!-- Animated Outer Radar Ping Ring -->
+        <div class="relative flex items-center justify-center">
+          <span class="animate-ping absolute inline-flex h-32 w-32 rounded-full bg-emerald-400/20 opacity-75"></span>
+          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/80 border-2 border-emerald-500/50 flex items-center justify-center shadow-2xl shadow-emerald-500/30 relative">
+            <Tv class="w-14 h-14 sm:w-16 sm:h-16 text-emerald-400 animate-pulse" />
+            <div class="absolute -bottom-3 -right-3 p-2 rounded-xl bg-amber-500 text-slate-950 shadow-lg font-black text-xs flex items-center gap-1">
+              <SignalZero class="w-3.5 h-3.5" />
+              <span>404</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Big 404 Headline -->
+        <div class="mt-6 space-y-2">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            <span>Signal Förlorad • Felkod 404</span>
+          </div>
+          
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight leading-tight">
+            Kanalen Hittades Inte
+          </h1>
+          
+          <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+            Sidan du försökte nå har flyttats, bytt frekvens eller är tillfälligt offline. Välj en direktkanal nedan för att komma rätt direkt.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Main Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a 
+          href="/" 
+          class="btn-primary py-4 px-8 text-sm font-bold flex items-center gap-2 shadow-xl shadow-emerald-500/30"
+        >
+          <Home class="w-4 h-4" />
+          <span>Tillbaka Till Startsidan</span>
+        </a>
+
+        <a 
+          href="/#pricing" 
+          class="px-8 py-4 rounded-full font-bold text-sm text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-emerald-500/40 transition-all flex items-center gap-2"
+        >
+          <Sparkles class="w-4 h-4 text-amber-400" />
+          <span>Abonnemang &amp; Priser (Från 50 kr/mån)</span>
+        </a>
+
+        <a 
+          href="https://wa.me/18036582620?text=Hej!%20Jag%20hamnade%20på%20en%20404-sida%20och%20behöver%20hjälp."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-4 rounded-full font-bold text-sm bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 transition-all flex items-center gap-2"
+        >
+          <MessageCircle class="w-4 h-4 text-emerald-400" />
+          <span>WhatsApp Support 24/7</span>
+        </a>
+      </div>
+
+      <!-- Fast Navigation Grid with Pro Icons -->
+      <div class="pt-10 text-left max-w-2xl mx-auto">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 text-center">
+          ⚡ Snabbval för att återansluta:
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          
+          <a href="/basta-iptv" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <Trophy class="w-4 h-4" />
+              </div>
+              <div>
+                <div class="font-bold text-white group-hover:text-emerald-300 transition-colors">Bästa IPTV Sverige 2026</div>
+                <div class="text-[11px] text-slate-400">Se vårt stora oberoende test</div>
+              </div>
+            </div>
+            <ArrowRight class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+          </a>
+
+          <a href="/basta-iptv-appar" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <Tv class="w-4 h-4" />
+              </div>
+              <div>
+                <div class="font-bold text-white group-hover:text-emerald-300 transition-colors">Bästa IPTV Appen</div>
+                <div class="text-[11px] text-slate-400">TiviMate &amp; Smart TV appar</div>
+              </div>
+            </div>
+            <ArrowRight class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+          </a>
+
+          <a href="/guides" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                <BookOpen class="w-4 h-4" />
+              </div>
+              <div>
+                <div class="font-bold text-white group-hover:text-emerald-300 transition-colors">Installationsguider</div>
+                <div class="text-[11px] text-slate-400">Guider för Samsung, LG, Apple TV</div>
+              </div>
+            </div>
+            <ArrowRight class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+          </a>
+
+          <a href="/contact" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 hover:border-emerald-500/40 transition-all flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <ShieldCheck class="w-4 h-4" />
+              </div>
+              <div>
+                <div class="font-bold text-white group-hover:text-emerald-300 transition-colors">Kundservice &amp; Kontakt</div>
+                <div class="text-[11px] text-slate-400">Sveavägen 44, Stockholm</div>
+              </div>
+            </div>
+            <ArrowRight class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

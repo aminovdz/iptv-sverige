@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <defs>
+    <linearGradient id="testBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0e14" />
+      <stop offset="100%" stop-color="#121824" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="400" rx="24" fill="url(#testBg)" stroke="rgba(245,158,11,0.3)" stroke-width="2" />
+  
+  <g transform="translate(60, 60)">
+    <rect x="0" y="0" width="240" height="34" rx="17" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.4)" />
+    <text x="20" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#fbbf24">🏆 BÄST I TEST SVERIGE 2026</text>
+    
+    <text x="0" y="90" font-family="Outfit, Inter, sans-serif" font-size="42" font-weight="900" fill="#ffffff">Sveriges Bästa IPTV Tjänst</text>
+    <text x="0" y="130" font-family="Inter, sans-serif" font-size="18" fill="#94a3b8">Betygsatt 4.9/5 av svenska användare i Stockholm, Göteborg och Malmö.</text>
+    <text x="0" y="160" font-family="Inter, sans-serif" font-size="18" fill="#94a3b8">Omedelbar aktivering via Swish och 24 timmars full återbetalningsgaranti.</text>
+    
+    <g transform="translate(0, 200)">
+      <text x="0" y="30" font-family="Outfit, Inter, sans-serif" font-size="36" font-weight="900" fill="#10b981">999 SEK</text>
+      <text x="170" y="30" font-family="Inter, sans-serif" font-size="16" fill="#94a3b8">/ 12 månader VIP (83 kr/mån + 1 mån gratis)</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,168 @@
+---
+import { HelpCircle, ChevronDown, Sparkles, MessageCircle } from "lucide-astro";
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: FAQItem[];
+}
+
+const defaultFaqs: FAQItem[] = [
+  {
+    question: "Vad är IPTV och hur fungerar det i Sverige?",
+    answer: "IPTV står för Internet Protocol Television och innebär att TV-sändningar och video on demand (VOD) levereras digitalt via din internetanslutning istället för via traditionell parabol, kabel eller marknät. Du ansluter enkelt via en app på din Smart TV, mediaspelare, mobil eller dator med hjälp av en M3U-länk eller Xtream Codes inloggning."
+  },
+  {
+    question: "Är IPTV lagligt att använda i Sverige?",
+    answer: "Själva IPTV-tekniken är helt laglig och används av ledande telekombolag. Som privatperson och konsument i Sverige är det fullt tillåtet att använda IP-baserad streaming. Vi rekommenderar alltid att använda stabila anslutningar och säkra appar med personliga inloggningsuppgifter för maximal säkerhet."
+  },
+  {
+    question: "Vilka betalningsmetoder accepterar ni och fungerar Swish?",
+    answer: "Ja, vi stödjer alla populära svenska betalningsmetoder inklusive Swish, Klarna, VISA, Mastercard, Apple Pay samt säkra kryptovalutor som Bitcoin. Swish är det snabbaste alternativet där du får dina inloggningsuppgifter automatiskt inom 5 minuter."
+  },
+  {
+    question: "Hur snabb internetuppkoppling behöver jag för 4K-streaming?",
+    answer: "För att streama svensk TV i Full HD rekommenderas minst 15–20 Mbps. För kristallklar 4K Ultra HD och 60 FPS sändningar (som sport i svensk fotboll och ishockey) rekommenderar vi en stabil uppkoppling på minst 30–50 Mbps via fiber, kabel eller 5G."
+  },
+  {
+    question: "Vilka enheter och appar kan jag använda för att titta?",
+    answer: "Vår tjänst är fullt kompatibel med alla moderna enheter: Samsung Smart TV (Tizen), LG Smart TV (webOS), Apple TV 4K, Google Chromecast, Android TV, mobiltelefoner (iOS & Android) samt datorer (Windows/Mac). De mest populära apparna är TiviMate, IPTV Smarters Pro, XCIPTV och GSE Smart IPTV."
+  },
+  {
+    question: "Ingår svensk EPG (elektronisk programguide) och textning?",
+    answer: "Ja, alla våra abonnemang har fullt stöd för automatisk svensk EPG i tidszonen Europe/Stockholm. Du ser alltid aktuell och kommande tablå 7 dagar framåt, och alla filmer samt serier (VOD) levereras med svenska undertexter."
+  },
+  {
+    question: "Hur snabbt levereras mitt abonnemang efter beställning?",
+    answer: "Leveransen sker blixtsnabbt och helautomatiskt. Så snart betalningen är bekräftad skickas dina M3U-länkar, EPG-adresser och Xtream Codes till din e-postadress och direkt via WhatsApp inom 2 till 5 minuter."
+  },
+  {
+    question: "Vad är er återbetalningspolicy vid eventuella problem?",
+    answer: "Vi erbjuder en strikt och transparent 24 timmars full återbetalningsgaranti. Om du mot förmodan skulle uppleva tekniska problem som vår tekniska support inte kan lösa, återbetalar vi hela beloppet inom 24 timmar från köpet."
+  },
+  {
+    question: "Kan jag testa IPTV Sverige gratis innan jag köper?",
+    answer: "Självklart! Vi erbjuder en 24 timmars gratis provperiod så att du kan testa vår bildkvalitet, kanalväxling och stabilitet under verkliga matcher innan du tecknar ett längre abonnemang. Kontakta vår support på WhatsApp för att få ditt testkonto."
+  }
+];
+
+const {
+  title = "Vanliga Frågor & Svar Om IPTV Sverige (FAQ)",
+  subtitle = "Här hittar du svar på de vanligaste frågorna gällande abonnemang, installation, kanaler, betalning och lagstiftning.",
+  items = defaultFaqs
+} = Astro.props;
+
+// Generate Schema matching exact H3 headers
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<section id="faq" class="py-20 relative overflow-hidden" aria-labelledby="faq-heading">
+  <!-- FAQ Schema Injection -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="max-container">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <HelpCircle class="w-3.5 h-3.5" />
+        <span>Frågor & Svar</span>
+      </div>
+      <h2 id="faq-heading" class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+        {title}
+      </h2>
+      <p class="text-base sm:text-lg text-slate-300">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Accordion FAQ Items List -->
+    <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion">
+      {items.map((item, index) => (
+        <div class="rounded-2xl glass-card border border-white/10 overflow-hidden transition-all duration-200 hover:border-emerald-500/30">
+          <button 
+            type="button" 
+            class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+            id={`faq-question-${index}`}
+          >
+            <!-- Exact H3 Question Tag for SEO Rich Snippet Matching -->
+            <h3 class="text-base sm:text-lg font-bold text-white leading-snug">
+              {item.question}
+            </h3>
+            <div class="faq-icon-wrapper w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 shrink-0 transition-transform duration-200">
+              <ChevronDown class="w-4 h-4" />
+            </div>
+          </button>
+
+          <div 
+            id={`faq-answer-${index}`}
+            class="faq-content hidden px-6 pb-6 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-white/5 pt-4"
+            aria-labelledby={`faq-question-${index}`}
+          >
+            <p>{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Need More Help Banner -->
+    <div class="mt-12 text-center max-w-xl mx-auto p-6 rounded-2xl glass-card border border-emerald-500/20 space-y-3">
+      <h3 class="text-base font-bold text-white">Har du fler frågor som inte besvarades här?</h3>
+      <p class="text-xs text-slate-400">Vårt supportteam finns tillgängligt dygnet runt för att hjälpa dig med allt från enhetsval till kanalfrågor.</p>
+      <div class="pt-1">
+        <a 
+          href="https://wa.me/18036582620" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold btn-primary"
+        >
+          <MessageCircle class="w-4 h-4" />
+          <span>Fråga Oss Direkt på WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const toggles = document.querySelectorAll(".faq-toggle");
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click", () => {
+      const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+      const targetId = toggle.getAttribute("aria-controls");
+      const content = targetId ? document.getElementById(targetId) : null;
+      const iconWrapper = toggle.querySelector(".faq-icon-wrapper");
+
+      // Toggle current
+      toggle.setAttribute("aria-expanded", (!isExpanded).toString());
+      if (content) {
+        content.classList.toggle("hidden");
+      }
+      if (iconWrapper) {
+        iconWrapper.classList.toggle("rotate-180");
+        iconWrapper.classList.toggle("text-emerald-400");
+        iconWrapper.classList.toggle("bg-emerald-500/20");
+      }
+    });
+  });
+</script>

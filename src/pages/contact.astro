@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import FAQSection from "../components/FAQSection.astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Kontakt", url: "/contact" }
+];
+---
+
+<Layout 
+  title="Kontakta IPTV Sverige — Support & Kundservice Dygnet Runt (24/7)" 
+  description="Kontakta IPTV Sveriges tekniska support via WhatsApp, Telegram eller e-post. Vi hjälper dig med installation, abonnemang och gratis provperiod."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/contact" />
+
+  <ContactForm />
+
+  <FAQSection 
+    title="Vanliga Frågor Inför Kontakt"
+    subtitle="De flesta vanliga frågor om installation och abonnemang finns besvarade direkt nedan."
+  />
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

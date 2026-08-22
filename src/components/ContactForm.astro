@@ -1,0 +1,262 @@
+---
+import { MessageCircle, Send, Mail, MapPin, Clock, ShieldCheck, CheckCircle2, ArrowRight } from "lucide-astro";
+---
+
+<section id="contact-section" class="py-20 relative overflow-hidden" aria-labelledby="contact-heading">
+  <div class="max-container">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <MessageCircle class="w-3.5 h-3.5" />
+        <span>Kundsupport & Kontakt</span>
+      </div>
+      <h2 id="contact-heading" class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+        Vi Finns Här För Att <span class="text-gradient-emerald">Hjälpa Dig 24/7</span>
+      </h2>
+      <p class="text-base sm:text-lg text-slate-300">
+        Har du frågor om installation, abonnemang eller vill ha hjälp att komma igång? Vår svensktalande support svarar snabbast via WhatsApp och Telegram.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Left Column: Official Support Channels (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- WhatsApp Direct Card (Primary) -->
+        <a 
+          href="https://wa.me/18036582620" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="block p-6 rounded-3xl glass-card-glow border-2 border-emerald-500/50 bg-gradient-to-br from-slate-900 via-emerald-950/40 to-slate-950 shadow-xl hover:scale-[1.02] transition-all duration-300 group"
+        >
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-500 flex items-center justify-center text-slate-950 shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                <MessageCircle class="w-8 h-8 stroke-[2.5]" />
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">WhatsApp Support</h3>
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                </div>
+                <div class="text-xs text-emerald-400 font-mono font-semibold">+1 (803) 658-2620</div>
+                <div class="text-[11px] text-slate-400 mt-1">Svarstid: Vanligtvis inom 2–5 minuter</div>
+              </div>
+            </div>
+            <ArrowRight class="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </a>
+
+        <!-- Community Channels Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- WhatsApp Channel -->
+          <a 
+            href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="p-5 rounded-2xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all hover:-translate-y-1 block group"
+          >
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-3 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
+              <MessageCircle class="w-5 h-5" />
+            </div>
+            <h4 class="text-sm font-bold text-white group-hover:text-emerald-300">WhatsApp Kanal</h4>
+            <p class="text-[11px] text-slate-400 mt-1">Matchlänkar & erbjudanden</p>
+          </a>
+
+          <!-- Telegram Channel -->
+          <a 
+            href="https://t.me/castvera_com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="p-5 rounded-2xl glass-card border border-white/10 hover:border-blue-500/40 transition-all hover:-translate-y-1 block group"
+          >
+            <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-3 group-hover:bg-blue-500 group-hover:text-slate-950 transition-colors">
+              <Send class="w-5 h-5" />
+            </div>
+            <h4 class="text-sm font-bold text-white group-hover:text-blue-300">Telegram Kanal</h4>
+            <p class="text-[11px] text-slate-400 mt-1">@castvera_com serverinfo</p>
+          </a>
+        </div>
+
+        <!-- Official Emails & Address Info -->
+        <div class="p-6 rounded-3xl glass-card border border-white/10 space-y-4 text-xs text-slate-300">
+          <div class="flex items-start gap-3">
+            <Mail class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">E-postadresser (Officiella):</div>
+              <div class="mt-0.5 space-y-0.5 text-slate-300">
+                <div>Kundärenden: <a href="mailto:contact@iptv-sverige.org" class="text-emerald-400 underline decoration-emerald-700 hover:text-emerald-300">contact@iptv-sverige.org</a></div>
+                <div>Teknisk support: <a href="mailto:support@castvera.com" class="text-emerald-400 underline decoration-emerald-700 hover:text-emerald-300">support@castvera.com</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 pt-3 border-t border-white/5">
+            <MapPin class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">Svenskt Huvudkontor:</div>
+              <div class="text-slate-400">Sveavägen 44, 111 34 Stockholm, Sverige</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 pt-3 border-t border-white/5">
+            <Clock class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <div>
+              <div class="font-bold text-white">Öppettider:</div>
+              <div class="text-slate-400">Dygnet runt (24/7/365) alla dagar om året</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Message Form (7 cols) -->
+      <div class="lg:col-span-7">
+        <div class="rounded-3xl glass-card border border-emerald-500/30 p-8 sm:p-10 shadow-2xl bg-slate-900/80">
+          <h3 class="text-2xl font-bold text-white font-display mb-2">
+            Skicka Ett Meddelande Till Oss
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 mb-8">
+            Fyll i formuläret nedan så återkommer en av våra svenska tekniker till dig inom kort.
+          </p>
+
+          <form id="contact-form" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Name -->
+              <div>
+                <label for="name" class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Ditt Namn *</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required 
+                  placeholder="t.ex. Johan Karlsson"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white text-sm outline-none transition-all placeholder:text-slate-600"
+                />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">E-postadress *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  placeholder="johan@exempel.se"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white text-sm outline-none transition-all placeholder:text-slate-600"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Phone / WhatsApp -->
+              <div>
+                <label for="phone" class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Telefon / WhatsApp</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  placeholder="070-123 45 67"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white text-sm outline-none transition-all placeholder:text-slate-600"
+                />
+              </div>
+
+              <!-- Device Selection -->
+              <div>
+                <label for="device" class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Vilken Enhet Använder Du?</label>
+                <select 
+                  id="device" 
+                  name="device"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white text-sm outline-none transition-all"
+                >
+                  <option value="Smart TV (Samsung / LG / Sony)">Smart TV (Samsung / LG / Sony)</option>
+                  <option value="Apple TV 4K">Apple TV 4K</option>
+                  <option value="Google Chromecast / Android TV">Google Chromecast / Android TV</option>
+                  <option value="TiviMate / IPTV Smarters">TiviMate / IPTV Smarters</option>
+                  <option value="Formuler / MAG Box">Formuler / MAG Box</option>
+                  <option value="Mobil / Dator">Mobil / Dator</option>
+                  <option value="Annan enhet">Annan enhet</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Subject / Inquiry -->
+            <div>
+              <label for="subject" class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Ärende *</label>
+              <select 
+                id="subject" 
+                name="subject"
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white text-sm outline-none transition-all"
+              >
+                <option value="Fråga om abonnemang & priser">Fråga om abonnemang & priser</option>
+                <option value="Begär 24h Gratis Provperiod">Begär 24h Gratis Provperiod</option>
+                <option value="Hjälp med installation på Smart TV / App">Hjälp med installation på Smart TV / App</option>
+                <option value="Betalningsfråga (Swish / Klarna / Kort)">Betalningsfråga (Swish / Klarna / Kort)</option>
+                <option value="Teknisk support">Teknisk support</option>
+                <option value="Annat ärende">Annat ärende</option>
+              </select>
+            </div>
+
+            <!-- Message Text -->
+            <div>
+              <label for="message" class="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Ditt Meddelande *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                required 
+                placeholder="Skriv din fråga eller vad du behöver hjälp med..."
+                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white text-sm outline-none transition-all placeholder:text-slate-600 resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              id="submit-form-btn"
+              class="btn-primary w-full py-4 text-sm sm:text-base font-bold shadow-xl shadow-emerald-500/30 flex items-center justify-center gap-2"
+            >
+              <span>Skicka Meddelande</span>
+              <Send class="w-4 h-4" />
+            </button>
+
+            <!-- Success State Message -->
+            <div id="form-success" class="hidden p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm text-center">
+              ✓ Tack för ditt meddelande! Vi har mottagit din förfrågan och återkopplar till din e-post inom kort. För omedelbar hjälp, kontakta oss på WhatsApp.
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const successBox = document.getElementById("form-success");
+  const submitBtn = document.getElementById("submit-form-btn");
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (submitBtn) {
+        submitBtn.setAttribute("disabled", "true");
+        submitBtn.innerHTML = "Skickar...";
+      }
+
+      setTimeout(() => {
+        if (successBox) successBox.classList.remove("hidden");
+        form.reset();
+        if (submitBtn) {
+          submitBtn.removeAttribute("disabled");
+          submitBtn.innerHTML = "Skickat!";
+        }
+      }, 800);
+    });
+  }
+</script>

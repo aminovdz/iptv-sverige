@@ -1,0 +1,236 @@
+---
+import { Tv, MessageCircle, Send, Mail, MapPin, ShieldCheck, Heart, ExternalLink } from "lucide-astro";
+
+const currentYear = new Date().getFullYear();
+
+const swedishCities = [
+  { name: "Stockholm", slug: "stockholm" },
+  { name: "Göteborg", slug: "goteborg" },
+  { name: "Malmö", slug: "malmo" },
+  { name: "Uppsala", slug: "uppsala" },
+  { name: "Västerås", slug: "vasteras" },
+  { name: "Örebro", slug: "orebro" },
+  { name: "Linköping", slug: "linkoping" },
+  { name: "Helsingborg", slug: "helsingborg" },
+  { name: "Jönköping", slug: "jonkoping" },
+  { name: "Norrköping", slug: "norrkoping" },
+  { name: "Lund", slug: "lund" },
+  { name: "Umeå", slug: "umea" },
+  { name: "Gävle", slug: "gavle" },
+  { name: "Borås", slug: "boras" },
+  { name: "Södertälje", slug: "sodertalje" }
+];
+
+const quickLinks = [
+  { name: "Startsida", href: "/" },
+  { name: "Testa IPTV Gratis (24h)", href: "/testa-iptv" },
+  { name: "Billig IPTV (Från 50 kr/mån)", href: "/billig-iptv" },
+  { name: "Bästa IPTV Sverige", href: "/basta-iptv" },
+  { name: "Installera IPTV (Alla Enheter)", href: "/installera-iptv" },
+  { name: "Bästa IPTV Appen", href: "/basta-iptv-appar" },
+  { name: "Abonnemang & Priser", href: "/#pricing" },
+  { name: "Referera En Vän (Tjäna 1 Mån)", href: "/referral" },
+  { name: "Jämför med Nordic IPTV", href: "/compare/iptv-sverige-vs-nordic-iptv" },
+  { name: "Jämför med IPTV King", href: "/compare/iptv-sverige-vs-iptvking" },
+  { name: "Kontakta Support", href: "/contact" }
+];
+
+const guideLinks = [
+  { name: "IPTV Böter i Sverige — Vad Säger Lagen?", href: "/guides/iptv-boter-sverige" },
+  { name: "Vad Är IPTV? Komplett Nybörjarguide", href: "/guides/vad-ar-iptv" },
+  { name: "Bästa IPTV Appen för Smart TV & Apple TV", href: "/guides/basta-iptv-appen" },
+  { name: "Installera IPTV på Samsung & LG TV", href: "/guides/installera-iptv-smart-tv" },
+  { name: "Varför Laggar IPTV? (7 Fixar)", href: "/guides/varfor-laggar-iptv" },
+  { name: "Nordic IPTV Flashback — Vad Säger Användarna?", href: "/guides/nordic-iptv-flashback" }
+];
+
+const legalLinks = [
+  { name: "Integritetspolicy (GDPR)", href: "/privacy" },
+  { name: "Användarvillkor", href: "/terms" },
+  { name: "Återbetalningspolicy (24h)", href: "/refund" },
+  { name: "DMCA Upphovsrätt", href: "/dmca" },
+  { name: "Ansvarsfraskrivelse", href: "/disclaimer" }
+];
+---
+
+<footer class="bg-slate-950/95 border-t border-glass-border pt-16 pb-12 text-slate-400 text-sm mt-auto relative overflow-hidden" role="contentinfo">
+  <!-- Subtle top accent line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
+
+  <div class="max-container space-y-16">
+    
+    <!-- Top Row: Brand Info + Primary Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      
+      <!-- Brand & About (4 cols) -->
+      <div class="lg:col-span-4 space-y-5">
+        <a href="/" class="flex items-center gap-3 group" aria-label="IPTV Sverige Hem">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+            <Tv class="w-5 h-5 text-slate-950 stroke-[2.5]" />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-black text-white font-display tracking-tight">
+              IPTV<span class="text-emerald-400">Sverige</span>
+            </span>
+            <span class="text-[10px] tracking-widest uppercase text-slate-400 font-semibold -mt-1">
+              Svensk Kvalitets-IPTV
+            </span>
+          </div>
+        </a>
+
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
+          Sveriges ledande portal för modern IPTV och streaming. Vi erbjuder högsta driftsäkerhet, direktsänd sport, underhållning och internationella titlar i 4K UHD utan buffring.
+        </p>
+
+        <!-- Official Channels & Contact -->
+        <div class="space-y-2.5 pt-2 text-xs">
+          <div class="flex items-center gap-2 text-slate-300">
+            <MapPin class="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>Sveavägen 44, 111 34 Stockholm, Sverige</span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-300">
+            <Mail class="w-4 h-4 text-emerald-400 shrink-0" />
+            <a href="mailto:contact@iptv-sverige.org" class="hover:text-emerald-400 transition-colors">contact@iptv-sverige.org</a>
+            <span class="text-slate-600">/</span>
+            <a href="mailto:support@castvera.com" class="hover:text-emerald-400 transition-colors">support@castvera.com</a>
+          </div>
+        </div>
+
+        <!-- Official Social / Channel Badges -->
+        <div class="flex flex-wrap gap-2 pt-3">
+          <a 
+            href="https://wa.me/18036582620" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+          >
+            <MessageCircle class="w-3.5 h-3.5 text-emerald-400" />
+            <span>WhatsApp Support</span>
+          </a>
+          <a 
+            href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+          >
+            <MessageCircle class="w-3.5 h-3.5 text-emerald-400" />
+            <span>WhatsApp Kanal</span>
+          </a>
+          <a 
+            href="https://t.me/castvera_com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-300 hover:bg-blue-500/20 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+          >
+            <Send class="w-3.5 h-3.5 text-blue-400" />
+            <span>Telegram Kanal</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-white">
+          Snabblänkar
+        </h3>
+        <ul class="space-y-2 text-xs">
+          {quickLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-emerald-400 transition-colors flex items-center gap-1">
+                <span>›</span>
+                <span>{link.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Swedish Guides Hub (3 cols) -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-white">
+          Guider & Artiklar
+        </h3>
+        <ul class="space-y-2 text-xs">
+          {guideLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-emerald-400 transition-colors flex items-start gap-1">
+                <span class="text-emerald-400">›</span>
+                <span>{link.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal & Trust (2 cols) -->
+      <div class="lg:col-span-2 space-y-4">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-white">
+          Juridik & Trygghet
+        </h3>
+        <ul class="space-y-2 text-xs">
+          {legalLinks.map(link => (
+            <li>
+              <a href={link.href} class="hover:text-emerald-400 transition-colors flex items-center gap-1">
+                <span>›</span>
+                <span>{link.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="pt-3">
+          <div class="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20 text-[11px] text-emerald-300">
+            <ShieldCheck class="w-4 h-4 mb-1 text-emerald-400" />
+            <span>24 timmars full återbetalningsgaranti vid tekniska fel.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Local Programmatic SEO: Swedish Cities Directory -->
+    <div class="pt-8 border-t border-white/5 space-y-4">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+          <span>📍</span>
+          <span>IPTV Tillgängligt i Hela Sverige (Stadsguider):</span>
+        </h3>
+        <span class="text-[11px] text-slate-500">Dedikerade lokala CDN-servrar</span>
+      </div>
+
+      <div class="flex flex-wrap gap-2 text-xs">
+        {swedishCities.map(city => (
+          <a 
+            href={`/locations/${city.slug}`}
+            class="px-2.5 py-1 rounded-md bg-white/[0.03] hover:bg-emerald-500/10 hover:text-emerald-300 border border-white/5 hover:border-emerald-500/30 transition-all"
+            title={`IPTV i ${city.name} — Se svenska kanaler och sport`}
+          >
+            IPTV {city.name}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Legal Disclaimer & Compliance -->
+    <div class="pt-6 border-t border-white/5 text-[11px] text-slate-300 space-y-3 leading-relaxed">
+      <p class="font-bold text-slate-300">
+        Juridiskt meddelande & Upphovsrätt (DMCA):
+      </p>
+      <p>
+        iptv-sverige.org är en teknisk och pedagogisk förmedlingsportal för digitala streamingtjänster och IP-baserad TV-teknik. Vi äger, lagrar eller sänder inga egna mediefiler eller videoströmmar på våra servrar. Allt innehåll tillhandahålls via externa tekniska nätverk. Tjänsten lyder under strikta användarvillkor och erbjuder 24 timmars öppet köp och återbetalning från beställningstillfället.
+      </p>
+    </div>
+
+    <!-- Bottom Copyright Row -->
+    <div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
+      <p>
+        © {currentYear} <strong>IPTV Sverige</strong> (iptv-sverige.org). Alla rättigheter förbehållna.
+      </p>
+      <div class="flex items-center gap-4 text-slate-300">
+        <span>Byggd för Core Web Vitals ⚡</span>
+        <span class="text-slate-700">|</span>
+        <span>Svensk Säkerhet & E-E-A-T</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

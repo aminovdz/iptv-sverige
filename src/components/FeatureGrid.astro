@@ -1,0 +1,198 @@
+---
+import { 
+  Zap, 
+  ShieldCheck, 
+  Tv, 
+  Smartphone, 
+  Clock, 
+  Headphones, 
+  Check, 
+  X, 
+  Sparkles, 
+  Layers, 
+  Cpu, 
+  Wifi 
+} from "lucide-astro";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = "Varför Är IPTV Sverige Det Självklara Valet För Svenska Tittare?",
+  subtitle = "Vi kombinerar avancerad hårdvara i Stockholm med marknadens mest stabila nätverk för att leverera svensk IPTV av högsta klass."
+} = Astro.props;
+
+const features = [
+  {
+    icon: Zap,
+    title: "Anti-Freeze 9.0 Teknologi",
+    description: "Ingen gillar lagg under avgörande derby eller slutspelsmatcher. Våra dedikerade CDN-servrar i Stockholm balanserar trafiken automatiskt så att du alltid streamar utan buffring.",
+    badge: "99.9% Upptid"
+  },
+  {
+    icon: Tv,
+    title: "Kristallklar 4K & 60 FPS Bild",
+    description: "Upplev direktsänd svensk sport, film och serier i äkta 4K UHD och jämn 60 bildrutor per sekund. Se varje detalj i direktsänd sport och stormatcher med maximal skärpa.",
+    badge: "Ultra HD"
+  },
+  {
+    icon: Clock,
+    title: "Komplett Svensk EPG & Tablå",
+    description: "Fullständig 7-dagars elektronisk programguide i svensk tid (Europe/Stockholm). Se vad som sänds just nu och missa aldrig dina favoritprogram.",
+    badge: "Svensk Tid"
+  },
+  {
+    icon: Smartphone,
+    title: "Fungerar på Alla Dina Enheter",
+    description: "Stödjer Samsung Smart TV, LG webOS, Apple TV, Android TV, Google TV, iPhone, iPad, Windows, Mac samt populära appar som TiviMate och IPTV Smarters.",
+    badge: "Multi-Platform"
+  },
+  {
+    icon: Headphones,
+    title: "Svensktalande Support 24/7",
+    description: "Behöver du hjälp med installation eller inställningar? Vårt tekniska supportteam svarar personligen på svenska via WhatsApp och Telegram inom några minuter.",
+    badge: "Snabb Respons"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Trygg Betalning med Swish",
+    description: "Vi prioriterar din trygghet och bekvämlighet. Betala smidigt via Swish, Klarna, betalkort eller kryptovaluta med omedelbar leverans av dina kontouppgifter.",
+    badge: "100% Tryggt"
+  }
+];
+
+const comparisonData = [
+  {
+    feature: "Månadskostnad (genomsnitt)",
+    us: "Från 50 kr/mån",
+    cable: "499–899 kr/mån",
+    generic: "19–50 kr/mån (Oseriös)"
+  },
+  {
+    feature: "Svenska kanaler & sport i 4K/60FPS",
+    us: "Ja, fullt stöd i högsta bitrate",
+    cable: "Kräver dyra tilläggspaket",
+    generic: "Låg bitrate, frekvent buffring"
+  },
+  {
+    feature: "Anti-Freeze servrar i Sverige",
+    us: "Ja, lokala servrar i Stockholm",
+    cable: "Fast installation / kabel",
+    generic: "Nej, överbelastade utlandsservrar"
+  },
+  {
+    feature: "Svensk EPG & Programguide",
+    us: "Ja, automatisk uppdatering",
+    cable: "Ja",
+    generic: "Ofta felaktig tidszon / saknas"
+  },
+  {
+    feature: "Bindningstid & dolda avgifter",
+    us: "0 månader (Ingen bindningstid)",
+    cable: "12–24 månaders bindningstid",
+    generic: "Ingen garanti, försvinner ofta"
+  },
+  {
+    feature: "Svensk support via WhatsApp",
+    us: "Ja, svar inom 5 minuter 24/7",
+    cable: "Långa telefonköer vardagar",
+    generic: "Ingen support eller anonym e-post"
+  },
+  {
+    feature: "Betalningsmetoder",
+    us: "Swish, Klarna, Kort, Krypto",
+    cable: "Faktura / Autogiro",
+    generic: "Endast krypto / privatperson"
+  }
+];
+---
+
+<section id="features" class="py-20 relative overflow-hidden" aria-labelledby="features-heading">
+  <div class="max-container">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Överlägsen Teknik & Kvalitet</span>
+      </div>
+      <h2 id="features-heading" class="text-3xl sm:text-4xl font-extrabold text-white font-display tracking-tight">
+        {title}
+      </h2>
+      <p class="text-base sm:text-lg text-slate-300">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Feature Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+      {features.map((item) => (
+        <div class="group relative rounded-2xl p-7 glass-card hover:glass-card-glow transition-all duration-300 hover:-translate-y-1">
+          <div class="flex items-start justify-between mb-5">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all duration-300 shadow-md">
+              <item.icon class="w-6 h-6" />
+            </div>
+            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+              {item.badge}
+            </span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+            {item.title}
+          </h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Comparison Table Section for E-E-A-T & Google Rich Snippets -->
+    <div class="rounded-3xl glass-card border border-emerald-500/30 p-6 sm:p-10 shadow-2xl">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white font-display">
+          Jämför <span class="text-gradient-emerald">IPTV Sverige</span> Med Alternativen
+        </h3>
+        <p class="text-sm text-slate-300 mt-2">
+          Se varför över 15 000 svenska hushåll har bytt från dyr kabel-TV till vårt moderna streamingabonnemang.
+        </p>
+      </div>
+
+      <!-- Responsive Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[640px]">
+          <thead>
+            <tr class="border-b border-white/10 text-xs uppercase tracking-wider font-bold">
+              <th class="py-4 px-4 text-slate-400">Funktion / Egenskap</th>
+              <th class="py-4 px-4 text-emerald-400 bg-emerald-500/10 rounded-t-xl">🇸🇪 IPTV Sverige</th>
+              <th class="py-4 px-4 text-slate-400">Traditionell Kabel-TV</th>
+              <th class="py-4 px-4 text-slate-400">Billiga Budgetleverantörer</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-sm">
+            {comparisonData.map((row) => (
+              <tr class="hover:bg-white/[0.02] transition-colors">
+                <td class="py-4 px-4 font-semibold text-slate-200">{row.feature}</td>
+                <td class="py-4 px-4 font-bold text-emerald-300 bg-emerald-500/5">
+                  <div class="flex items-center gap-2">
+                    <Check class="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>{row.us}</span>
+                  </div>
+                </td>
+                <td class="py-4 px-4 text-slate-400">{row.cable}</td>
+                <td class="py-4 px-4 text-slate-500 text-xs">{row.generic}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Bottom Trust Note -->
+      <div class="mt-6 pt-4 border-t border-white/5 text-center text-xs text-slate-400">
+        💡 <em>Testa oss riskfritt med vår 24 timmars provperiod innan du bestämmer dig. Inga förpliktelser.</em>
+      </div>
+    </div>
+
+  </div>
+</section>

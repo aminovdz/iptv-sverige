@@ -1,0 +1,136 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
+import Footer from "../../components/Footer.astro";
+import FloatingWhatsApp from "../../components/FloatingWhatsApp.astro";
+import CTASection from "../../components/CTASection.astro";
+import { getCollection } from "astro:content";
+import { BookOpen, Clock, User, Calendar, ArrowRight, Sparkles, Tag } from "lucide-astro";
+
+// Fetch all guides sorted by date
+let guides: any[] = [];
+try {
+  guides = await getCollection("guides");
+  guides.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+} catch (e) {
+  guides = [];
+}
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Guider & Blogg", url: "/guides" }
+];
+---
+
+<Layout 
+  title="IPTV Guider & Blogg — Allt Om Svensk IPTV, Appar & Juridik 2026" 
+  description="Läs Sveriges mest heltäckande guider om IPTV. Lär dig om IPTV böter och lagar, hur du installerar TiviMate på Smart TV och hur du får maximal bildkvalitet."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/guides" />
+
+  <div class="py-16 md:py-24 relative overflow-hidden">
+    <div class="max-container">
+      
+      <!-- Blog Hub Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <BookOpen class="w-3.5 h-3.5" />
+          <span>Kunskapsbank & Experttips</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-tight">
+          Svenska <span class="text-gradient-emerald">IPTV Guider & Artiklar</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+          Djupgående guider, installationsanvisningar och analyser författade av vår tekniska redaktion. Lär dig allt om lagstiftning, appar, hårdvara och felsökning.
+        </p>
+      </div>
+
+      <!-- Articles Grid -->
+      {guides.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {guides.map((post) => (
+            <article class="rounded-3xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden group shadow-xl">
+              
+              <!-- Card Top Header -->
+              <div class="p-7 space-y-4">
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">
+                    <Tag class="w-3 h-3" />
+                    {post.data.category || "Guide"}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <Clock class="w-3.5 h-3.5 text-slate-500" />
+                    {post.data.readingTime || "6 min"}
+                  </span>
+                </div>
+
+                <h2 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+                  <a href={`/guides/${post.slug || post.id}`}>
+                    {post.data.title}
+                  </a>
+                </h2>
+
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                  {post.data.description}
+                </p>
+              </div>
+
+              <!-- Card Bottom Footer -->
+              <div class="p-7 pt-0  mt-4">
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-[11px]">
+                      EL
+                    </div>
+                    <span>{post.data.author || "Erik Lindqvist"}</span>
+                  </div>
+
+                  <a 
+                    href={`/guides/${post.slug || post.id}`}
+                    class="text-emerald-400 font-bold hover:text-emerald-300 flex items-center gap-1"
+                  >
+                    <span>Läs artikel</span>
+                    <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+
+            </article>
+          ))}
+        </div>
+      ) : (
+        <!-- Fallback Placeholder while guides are loading -->
+        <div class="text-center py-12 glass-card rounded-3xl p-8 max-w-xl mx-auto space-y-4">
+          <BookOpen class="w-12 h-12 text-emerald-400 mx-auto animate-pulse" />
+          <h2 class="text-xl font-bold text-white">Artiklar uppdateras...</h2>
+          <p class="text-xs text-slate-400">Våra senaste svenska IPTV-guider laddas in inom kort.</p>
+        </div>
+      )}
+
+      <!-- Promotional Mid-Banner -->
+      <div class="rounded-3xl glass-card-glow border-2 border-emerald-500/40 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 p-8 sm:p-12 text-center max-w-4xl mx-auto space-y-4">
+        <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 inline-block">
+          REKOMMENDERAD LÖSNING
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-display">
+          Trött På Krångliga Guider? Få Allt Förinstallerat med IPTV Sverige!
+        </h2>
+        <p class="text-sm text-slate-300 max-w-xl mx-auto">
+          Vi skickar färdiga inloggningskoder och installationsguider anpassade för just din Smart TV. Betala tryggt med Swish.
+        </p>
+        <div class="pt-2">
+          <a href="/#pricing" class="btn-primary py-3.5 px-8 text-sm font-bold shadow-xl shadow-emerald-500/30">
+            Se Våra Paket & Kom Igång På 5 Min
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

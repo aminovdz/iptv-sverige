@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { ShieldAlert, Mail, MapPin } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "DMCA Upphovsrätt", url: "/dmca" }
+];
+---
+
+<Layout 
+  title="DMCA & Upphovsrättspolicy — IPTV Sverige" 
+  description="DMCA och upphovsrättslig information för iptv-sverige.org. Läs om vår policy gällande immateriella rättigheter och anmälan om upphovsrättsintrång."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/dmca" />
+
+  <div class="py-16 md:py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center space-y-4 mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <ShieldAlert class="w-3.5 h-3.5" />
+          <span>Upphovsrättslig Information</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+          DMCA & Upphovsrättspolicy
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Senast uppdaterad: 2026-08-20 · iptv-sverige.org
+        </p>
+      </div>
+
+      <div class="rounded-3xl glass-card border border-white/10 p-8 sm:p-12 space-y-8 text-sm text-slate-300 leading-relaxed">
+        
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">1.</span> Teknisk Roll & Friskrivning
+          </h2>
+          <p>
+            iptv-sverige.org respekterar alla immateriella rättigheter och förväntar sig att våra användare och samarbetspartners gör detsamma. 
+          </p>
+          <p>
+            Vår webbplats fungerar uteslutande som en teknisk förmedlingsportal och informationsplattform för digital streamingteknik. Vi <strong>äger inte, sänder inte, och lagrar inga mediefiler, TV-kanaler eller videoströmmar</strong> på våra egna webbservrar. Alla strömmar tillhandahålls och sänds via externa tredjepartskällor över det publika internet.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">2.</span> Anmälan om Upphovsrättsintrång (Takedown Notice)
+          </h2>
+          <p>
+            Om du är upphovsrättsinnehavare eller ett befullmäktigat ombud för en sådan och anser att något innehåll som refereras till eller förmedlas via vår tjänst kränker dina immateriella rättigheter, ber vi dig att skicka ett formellt skriftligt meddelande till oss innehållande följande information:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 text-slate-300">
+            <li>En fysisk eller elektronisk signatur från upphovsrättsinnehavaren eller behörigt ombud.</li>
+            <li>Identifiering av det upphovsrättsskyddade verk som påstås ha kränkts.</li>
+            <li>Specifik identifiering och URL till det material som begärs avlägsnat eller vars åtkomst ska spärras.</li>
+            <li>Dina fullständiga kontaktuppgifter: namn, postadress, telefonnummer och e-postadress.</li>
+            <li>Ett uttalande om att du i god tro anser att den omtvistade användningen inte är godkänd av upphovsrättsinnehavaren, dess ombud eller lag.</li>
+            <li>Ett intygande på heder och samvete om att informationen i anmälan är korrekt.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3 pt-4 border-t border-white/10">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">3.</span> Kontakt för DMCA-ärenden
+          </h2>
+          <p>
+            Samtliga formella anmälningar behandlas skyndsamt och ska skickas till vårt juridiska kontaktombud:
+          </p>
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1 text-xs text-slate-300">
+            <div><strong>Juridisk e-post:</strong> <a href="mailto:contact@iptv-sverige.org" class="text-emerald-400">contact@iptv-sverige.org</a></div>
+            <div><strong>Alternativ kontakt:</strong> <a href="mailto:support@castvera.com" class="text-emerald-400">support@castvera.com</a></div>
+            <div><strong>Postadress:</strong> Sveavägen 44, 111 34 Stockholm, Sverige</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

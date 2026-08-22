@@ -1,0 +1,337 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
+import Footer from "../../components/Footer.astro";
+import FloatingWhatsApp from "../../components/FloatingWhatsApp.astro";
+import { getCollection, render } from "astro:content";
+import { Calendar, Clock, Tag, ArrowLeft, ShieldCheck, Sparkles, MessageCircle, ArrowRight, BookOpen } from "lucide-astro";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((post) => ({
+    params: { slug: post.slug || post.id },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Fetch other guides for related recommendations
+const allGuides = await getCollection("guides");
+const relatedGuides = allGuides.filter(g => (g.slug || g.id) !== (post.slug || post.id)).slice(0, 2);
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, "") : "https://iptv-sverige.org";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Guider", url: "/guides" },
+  { name: post.data.title, url: `/guides/${post.slug || post.id}` }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": post.data.heroImage ? (post.data.heroImage.startsWith("http") ? post.data.heroImage : `${siteUrl}${post.data.heroImage}`) : `${siteUrl}/favicon.svg`,
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": post.data.updatedDate ? post.data.updatedDate.toISOString() : post.data.pubDate.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": post.data.author || "Erik Lindqvist",
+    "jobTitle": "Teknikredaktör & Nätverksexpert",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "IPTV Sverige"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "IPTV Sverige",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${siteUrl}/guides/${post.slug || post.id}`
+  }
+};
+---
+
+<Layout 
+  title={`${post.data.title} | IPTV Sverige Guider`}
+  description={post.data.description}
+  image={post.data.heroImage}
+  type="article"
+  schema={articleSchema}
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/guides" />
+
+  <main class="py-12 md:py-20 relative">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <!-- Back Link -->
+      <div class="mb-8">
+        <a 
+          href="/guides" 
+          class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors group"
+        >
+          <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span>Tillbaka till alla guider</span>
+        </a>
+      </div>
+
+      <!-- Article Header: Clean Tech Blog / Media Publication Format -->
+      <header class="space-y-6 mb-12">
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold tracking-wide uppercase">
+            {post.data.category || "Svensk IPTV Guide"}
+          </span>
+          <span class="text-slate-400 flex items-center gap-1 font-medium">
+            <Clock class="w-3.5 h-3.5 text-emerald-400" /> {post.data.readingTime || "8 min lästid"}
+          </span>
+          <span class="text-slate-400 flex items-center gap-1 font-medium">
+            <Calendar class="w-3.5 h-3.5 text-slate-500" /> Uppdaterad {new Date(post.data.updatedDate || post.data.pubDate).toLocaleDateString("sv-SE")}
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-[1.15]">
+          {post.data.title}
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-normal">
+          {post.data.description}
+        </p>
+
+        <!-- Author Byline -->
+        <div class="flex items-center gap-3 pt-2 text-sm text-slate-300">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-slate-950 font-black text-sm shrink-0">
+            EL
+          </div>
+          <div>
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <span>{post.data.author || "Erik Lindqvist"}</span>
+              <ShieldCheck class="w-4 h-4 text-emerald-400" />
+            </div>
+            <div class="text-xs text-slate-400">Teknikredaktör &amp; IPTV-specialist · IPTV Sverige</div>
+          </div>
+        </div>
+
+        <!-- Featured Hero Image -->
+        {post.data.heroImage && (
+          <div class="pt-4 overflow-hidden rounded-2xl shadow-2xl">
+            <img 
+              src={post.data.heroImage} 
+              alt={post.data.imageAlt || post.data.title}
+              class="w-full h-auto max-h-[460px] object-cover rounded-2xl"
+              loading="eager"
+              width="800"
+              height="450"
+            />
+          </div>
+        )}
+      </header>
+
+      <!-- Clean Article Body: Normal Blog Post Typography with BOLD Visible Headings -->
+      <article class="article-content space-y-6 text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
+        <Content />
+      </article>
+
+      <!-- In-Article Solution Box (Clean Conversion Block) -->
+      <section class="mt-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-emerald-950/80 to-slate-900 border border-emerald-500/30 text-center space-y-4 shadow-2xl">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider">
+          <Sparkles class="w-3.5 h-3.5" />
+          <span>Slipp Allt Krångel</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-display">
+          Streama Svensk TV &amp; Sport i Kristallklar 4K
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
+          Få omedelbar tillgång till svenska och internationella kanaler i högsta kvalitet utan buffring. Testa riskfritt med 24 timmars provperiod.
+        </p>
+        <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/#pricing" class="btn-primary py-3.5 px-8 text-sm font-bold shadow-xl flex items-center justify-center gap-2">
+            <span>Se Abonnemang &amp; Priser</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20läste%20artikeln%20och%20vill%20ha%20ett%20gratis%2024h%20testkonto." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 rounded-full text-sm font-bold bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center gap-2"
+          >
+            <MessageCircle class="w-4 h-4 text-emerald-400" />
+            <span>Chatta på WhatsApp</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Related Posts Section -->
+      {relatedGuides.length > 0 && (
+        <section class="mt-16 space-y-6">
+          <h2 class="text-2xl font-black text-white font-display">
+            Fler Rekommenderade Guider
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {relatedGuides.map((rel) => (
+              <a 
+                href={`/guides/${rel.slug || rel.id}`}
+                class="p-6 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/10 hover:border-emerald-500/40 transition-all group flex flex-col justify-between"
+              >
+                <div class="space-y-2">
+                  <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">
+                    {rel.data.category || "Guide"}
+                  </span>
+                  <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    {rel.data.title}
+                  </h3>
+                  <p class="text-xs text-slate-400 line-clamp-2">
+                    {rel.data.description}
+                  </p>
+                </div>
+                <div class="mt-4 pt-2 flex items-center justify-between text-xs text-slate-400">
+                  <span>{rel.data.readingTime || "8 min"}</span>
+                  <span class="text-emerald-400 font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Läs artikel →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </main>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>
+
+<style is:global>
+  /* Clean Blog Post Styling with High-Contrast Bold Headings */
+  .article-content h1 {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  
+  .article-content h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    display: block;
+  }
+  @media (min-width: 640px) {
+    .article-content h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .article-content h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #34d399;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    display: block;
+  }
+
+  .article-content h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f59e0b;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-content p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .article-content a {
+    color: #34d399;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .article-content a:hover {
+    color: #6ee7b7;
+  }
+
+  .article-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    space-y: 0.5rem;
+  }
+
+  .article-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    space-y: 0.5rem;
+  }
+
+  .article-content li {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-content blockquote {
+    background: rgba(16, 185, 129, 0.05);
+    border-left: 4px solid #10b981;
+    padding: 1rem 1.25rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    margin: 1.5rem 0;
+    color: #e2e8f0;
+  }
+
+  .article-content hr {
+    display: none !important;
+  }
+
+  .article-content table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .article-content th {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .article-content td {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+  }
+</style>

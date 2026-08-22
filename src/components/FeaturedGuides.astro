@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+import { BookOpen, Clock, ArrowRight, Tag, ShieldCheck } from "lucide-astro";
+
+let guides: any[] = [];
+try {
+  guides = await getCollection("guides");
+  guides.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+} catch (e) {
+  guides = [];
+}
+---
+
+<section class="py-20 relative overflow-hidden bg-white/[0.01]" id="guides">
+  <div class="max-container">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <BookOpen class="w-3.5 h-3.5" />
+        <span>Kunskapsbank & Expertartiklar</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+        Populära <span class="text-gradient-emerald">IPTV Guider &amp; Artiklar</span>
+      </h2>
+      
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        Lär dig allt om svensk IPTV, lagstiftning kring böter, hur du installerar TiviMate på Smart TV och hur du maximerar din bildkvalitet.
+      </p>
+    </div>
+
+    <!-- Guides Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {guides.map((post) => (
+        <article class="rounded-3xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden group shadow-xl">
+          
+          <!-- Guide Hero Banner Image -->
+          {post.data.heroImage && (
+            <a href={`/guides/${post.slug || post.id}`} class="block aspect-video overflow-hidden  relative">
+              <img 
+                src={post.data.heroImage} 
+                alt={post.data.imageAlt || post.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="400"
+                height="225"
+              />
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 text-[11px] font-bold text-emerald-400">
+                {post.data.category || "Guide"}
+              </div>
+            </a>
+          )}
+
+          <!-- Card Content -->
+          <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="flex items-center gap-1">
+                  <Clock class="w-3.5 h-3.5 text-emerald-400" />
+                  {post.data.readingTime || "8 min"}
+                </span>
+                <span class="text-[11px] text-slate-400">
+                  {new Date(post.data.pubDate).toLocaleDateString("sv-SE")}
+                </span>
+              </div>
+
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+                <a href={`/guides/${post.slug || post.id}`}>
+                  {post.data.title}
+                </a>
+              </h3>
+
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">
+                {post.data.description}
+              </p>
+            </div>
+
+            <!-- Footer / CTA link -->
+            <div class="pt-4 mt-4  flex items-center justify-between text-xs">
+              <span class="text-slate-400 font-medium">Av {post.data.author || "Erik Lindqvist"}</span>
+              <a 
+                href={`/guides/${post.slug || post.id}`}
+                class="text-emerald-400 font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 hover:text-emerald-300"
+              >
+                <span>Läs artikeln</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+    <!-- Bottom Button to All Guides -->
+    <div class="mt-12 text-center">
+      <a 
+        href="/guides" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 hover:border-emerald-500/40 transition-all"
+      >
+        <BookOpen class="w-4 h-4 text-emerald-400" />
+        <span>Se alla artiklar och guider ({guides.length} st)</span>
+        <ArrowRight class="w-3.5 h-3.5 text-emerald-400" />
+      </a>
+    </div>
+
+  </div>
+</section>

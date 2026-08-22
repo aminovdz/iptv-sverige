@@ -1,0 +1,238 @@
+---
+import { Check, Zap, ShieldCheck, Star, Sparkles, ArrowRight, Clock } from "lucide-astro";
+
+interface PricingPlan {
+  id: string;
+  name: string;
+  duration: string;
+  price: string;
+  pricePerMonth: string;
+  savings?: string;
+  isPopular?: boolean;
+  isBestValue?: boolean;
+  badge?: string;
+  ctaText: string;
+  whatsappMessage: string;
+}
+
+const plans: PricingPlan[] = [
+  {
+    id: "12-months",
+    name: "12 Månader VIP",
+    duration: "12 Månaders Fullt Abonnemang",
+    price: "600 SEK",
+    pricePerMonth: "50 SEK / mån",
+    savings: "Spara 75% + 1 Mån Extra Gratis",
+    isBestValue: true,
+    isPopular: true,
+    badge: "👑 MEST POPULÄR & BÄSTA VÄRDET",
+    ctaText: "Välj 12 Månader (Bästa Köp)",
+    whatsappMessage: "Hej! Jag vill beställa 12 Månaders VIP-paketet för 600 SEK och få 1 månad extra gratis."
+  },
+  {
+    id: "6-months",
+    name: "6 Månader Standard",
+    duration: "6 Månaders Abonnemang",
+    price: "333 SEK",
+    pricePerMonth: "55 SEK / mån",
+    savings: "Spara 55%",
+    badge: "🔥 POPULÄRT VAL",
+    ctaText: "Välj 6 Månader",
+    whatsappMessage: "Hej! Jag vill beställa 6 Månaders standardpaketet för 333 SEK."
+  },
+  {
+    id: "3-months",
+    name: "3 Månader Bas",
+    duration: "3 Månaders Abonnemang",
+    price: "222 SEK",
+    pricePerMonth: "74 SEK / mån",
+    savings: "Spara 35%",
+    ctaText: "Välj 3 Månader",
+    whatsappMessage: "Hej! Jag vill beställa 3 Månaders baspaketet för 222 SEK."
+  },
+  {
+    id: "1-month",
+    name: "1 Månad Test",
+    duration: "1 Månads Provabonnemang",
+    price: "89 SEK",
+    pricePerMonth: "89 SEK / mån",
+    ctaText: "Välj 1 Månad",
+    whatsappMessage: "Hej! Jag vill beställa 1 Månad test för 89 SEK."
+  }
+];
+
+const sharedFeatures = [
+  "Alla Svenska & Nordiska Premiumkanaler i 4K",
+  "Direktsänd Svensk & Internationell Sport i 60 FPS",
+  "Kristallklar 4K Ultra HD & Full HD Kvalitet",
+  "Anti-Freeze 9.0 Teknologi med Servrar i Stockholm",
+  "Komplett Svensk EPG & 7-dagars Programtablå",
+  "Svensktextade Filmer & Serier (VOD)",
+  "Fungerar på Smart TV, Apple TV, Android & TiviMate",
+  "Personlig Svensk Support 24/7 via WhatsApp",
+  "Ingen Bindningstid & 24h Återbetalningsgaranti"
+];
+---
+
+<section id="pricing" class="py-20 relative overflow-hidden" aria-labelledby="pricing-heading">
+  <!-- Glow Elements -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+
+  <div class="max-container">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Enkla & Transparenta Priser</span>
+      </div>
+      
+      <h2 id="pricing-heading" class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+        Välj Ditt <span class="text-gradient-emerald">IPTV Abonnemang</span>
+      </h2>
+      
+      <p class="text-base sm:text-lg text-slate-300">
+        Starta din streamingupplevelse inom 5 minuter. Alla abonnemang inkluderar full tillgång till svenska kanaler, live sport i 60 FPS och personlig support.
+      </p>
+
+      <!-- 24h Trial Notice Banner -->
+      <div class="pt-2">
+        <a 
+          href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20i%2024%20timmar." 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-amber-500/40 text-amber-300 hover:bg-amber-500/10 text-xs font-bold transition-colors"
+        >
+          <Zap class="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+          <span>Vill du testa först? Klicka här för att begära en 24h Gratis Provperiod via WhatsApp</span>
+          <ArrowRight class="w-3.5 h-3.5" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Pricing Cards Grid - IMPORTANT: 12-Month plan starts first -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+      {plans.map((plan) => (
+        <div 
+          class:list={[
+            "relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5",
+            plan.isBestValue 
+              ? "glass-card-glow border-2 border-emerald-500/60 bg-gradient-to-b from-slate-900/95 via-emerald-950/40 to-slate-950/95 shadow-2xl shadow-emerald-500/20 lg:-translate-y-2" 
+              : "glass-card border border-white/10 hover:border-emerald-500/30 bg-slate-900/70"
+          ]}
+        >
+          {/* Top Badge */}
+          {plan.badge && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 w-max px-3.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-md">
+              {plan.badge}
+            </div>
+          )}
+
+          <div>
+            <!-- Header Info -->
+            <div class="text-center pb-6 border-b border-white/10 space-y-2">
+              <h3 class="text-xl font-bold text-white font-display">
+                {plan.name}
+              </h3>
+              <p class="text-xs text-slate-400">{plan.duration}</p>
+              
+              <!-- Main Price -->
+              <div class="pt-3">
+                <div class="text-4xl sm:text-5xl font-black text-white font-display tracking-tight">
+                  {plan.price}
+                </div>
+                <div class="text-xs font-semibold text-emerald-400 mt-1">
+                  {plan.pricePerMonth}
+                </div>
+                {plan.savings && (
+                  <span class="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    {plan.savings}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <!-- Features Checklist -->
+            <ul class="py-6 space-y-3 text-xs text-slate-300">
+              {sharedFeatures.map((feat) => (
+                <li class="flex items-start gap-2.5">
+                  <Check class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Bottom Action -->
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <a 
+              href={`https://wa.me/18036582620?text=${encodeURIComponent(plan.whatsappMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                "w-full py-3.5 px-4 rounded-2xl font-bold text-sm text-center flex items-center justify-center gap-2 transition-all duration-200 shadow-lg",
+                plan.isBestValue 
+                  ? "btn-primary" 
+                  : "bg-white/10 hover:bg-emerald-500 hover:text-slate-950 text-white border border-white/10"
+              ]}
+              aria-label={`Beställ ${plan.name}`}
+            >
+              <span>{plan.ctaText}</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+
+            <div class="flex items-center justify-center gap-2 text-[11px] text-slate-400">
+              <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+              <span>24h Full Återbetalningsgaranti</span>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Payment Trust Badges Image with Keyword Alt Text -->
+  <div class="mt-12 mb-4 flex justify-center">
+    <img 
+      src="/images/swish-klarna-badges.svg" 
+      alt="Säkra betalningsmetoder för IPTV Sverige — Swish, Klarna, VISA, Mastercard och kryptovaluta" 
+      class="w-full max-w-xl mx-auto"
+      loading="lazy"
+      width="600"
+      height="120"
+    />
+  </div>
+
+  <!-- Supported Payment Methods Trust Bar -->
+    <div class="mt-16 pt-8 border-t border-white/10 rounded-2xl glass-card p-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <h3 class="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
+          <span>💳</span>
+          <span>Säkra & Trygga Betalningsalternativ</span>
+        </h3>
+        <p class="text-xs text-slate-400 mt-1">
+          Betala med din föredragna svenska betalningsmetod. Direkt leverans till din e-post & WhatsApp.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-200">
+          🇸🇪 Swish
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-200">
+          Klarna
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-200">
+          VISA / Mastercard
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-200">
+          Apple Pay
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-slate-200">
+          Bitcoin / Krypto
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>

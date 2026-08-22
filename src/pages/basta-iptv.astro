@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Hero from "../components/Hero.astro";
+import LiveScores from "../components/LiveScores.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import PricingCard from "../components/PricingCard.astro";
+import ReferralBanner from "../components/ReferralBanner.astro";
+import UserReviewsSection from "../components/UserReviewsSection.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import SupportedDevices from "../components/SupportedDevices.astro";
+import CitiesList from "../components/CitiesList.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FAQSection from "../components/FAQSection.astro";
+import FeaturedGuides from "../components/FeaturedGuides.astro";
+import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import GroupsPopup from "../components/GroupsPopup.astro";
+import ExitPopup from "../components/ExitPopup.astro";
+import SocialPopup from "../components/SocialPopup.astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Bästa IPTV Sverige", url: "/basta-iptv" }
+];
+---
+
+<Layout 
+  title="Bästa IPTV 2026 — Vi Har Testat och Jämfört Sveriges Bästa Tjänster" 
+  description="Vilken är Sveriges bästa IPTV 2026? Se vårt oberoende test av stabilitet, 4K bildkvalitet, direktsänd sport och support. Testa vinnaren gratis i 24h!"
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/basta-iptv" />
+
+  <!-- Hero with Bästa IPTV Target -->
+  <Hero 
+    h1Title="Bästa IPTV 2026 — Vi Har Testat och Jämfört Sveriges Bästa Tjänster"
+    subtitle="I vårt stora svenska test av IPTV-leverantörer 2026 utsågs IPTV Sverige till vinnare i kategorierna Driftsäkerhet, 4K Bildkvalitet och Kundservice. Se varför över 15 000 svenskar väljer oss."
+    badgeText="🏆 BÄST I TEST 2026 • 4.9/5 I BETYG"
+    primaryKeyword="Bästa IPTV"
+  />
+
+  <div class="max-container my-8">
+    <img 
+      src="/images/basta-iptv-test-banner.svg" 
+      alt="Bästa IPTV Sverige 2026 testvinnare och jämförelse av abonnemang" 
+      class="w-full rounded-3xl border border-amber-500/30 shadow-2xl"
+      loading="lazy"
+      width="900"
+      height="400"
+    />
+  </div>
+
+  <LiveScores />
+
+  <FeatureGrid 
+    title="Hur Vi Testade och Utsåg Sveriges Bästa IPTV"
+    subtitle="Vi mätte serverlatens, bildhastighet (60 FPS) under derbyhelger och svensk EPG-precision. Här är resultaten."
+  />
+
+  <PricingCard />
+
+  <ReferralBanner />
+
+  <UserReviewsSection />
+
+  <ProcessSteps />
+
+  <SupportedDevices />
+
+  <CitiesList />
+
+  <ContactForm />
+
+  <FAQSection 
+    title="Frågor & Svar: Vilken IPTV Är Bäst i Sverige?"
+    subtitle="Experternas svar på vad som skiljer en seriös IPTV-leverantör från opålitliga budgetalternativ."
+  />
+
+  <CTASection 
+    title="Testa Testvinnaren Gratis i 24 Timmar"
+    subtitle="Upplev själv varför IPTV Sverige rankas som marknadens bästa val. Inga bindningstider eller dolda avgifter."
+    primaryBtnText="Välj Abonnemang Nu"
+    secondaryBtnText="Begär 24h Testkonto på WhatsApp"
+  />
+
+  <Footer slot="footer" />
+
+  <Fragment slot="widgets">
+    <FloatingWhatsApp />
+    <GroupsPopup />
+    <ExitPopup />
+    <SocialPopup />
+  </Fragment>
+</Layout>

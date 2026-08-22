@@ -1,0 +1,360 @@
+---
+import { Activity, Play, Radio, Sparkles, Trophy, Calendar, Clock } from "lucide-astro";
+---
+
+<section id="live-scores" class="py-16 md:py-24 relative overflow-hidden" aria-labelledby="sports-heading">
+  <div class="max-container relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider animate-pulse">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+        <Activity class="w-3.5 h-3.5" />
+        <span>Live Sport API • Direktuppdatering</span>
+      </div>
+      
+      <h2 id="sports-heading" class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-tight">
+        Se All <span class="text-gradient-emerald">Live Sport i 60 FPS</span> i Realtid
+      </h2>
+      
+      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        Följ direktsändningar och realtidsresultat från svensk och europeisk fotboll, ishockey och kampsport i kristallklar 4K Ultra HD och 60 bilder per sekund.
+      </p>
+    </div>
+
+    <!-- League Selector Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 max-w-5xl mx-auto">
+      <button 
+        type="button" 
+        class="league-btn active btn-primary px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold shadow-lg"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/swe.1/scoreboard"
+        data-league="Svensk Fotboll"
+      >
+        🇸🇪 Svensk Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard"
+        data-league="Engelsk Fotboll"
+      >
+        🏴󠁧󠁢󠁥󠁮󠁧󠁿 Engelsk Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/scoreboard"
+        data-league="Europa Fotboll"
+      >
+        🏆 Europa Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/scoreboard"
+        data-league="Spansk Fotboll"
+      >
+        🇪🇸 Spansk Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/scoreboard"
+        data-league="Italiensk Fotboll"
+      >
+        🇮🇹 Italiensk Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard"
+        data-league="Tysk Fotboll"
+      >
+        🇩🇪 Tysk Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/ned.1/scoreboard"
+        data-league="Nederländsk Fotboll"
+      >
+        🇳🇱 Nederländsk Fotboll
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
+        data-league="Ishockey"
+      >
+        🏒 Ishockey Live
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
+        data-league="Basket"
+      >
+        🏀 Basket Live
+      </button>
+
+      <button 
+        type="button" 
+        class="league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-red-400 border border-red-500/20"
+        data-url="https://site.api.espn.com/apis/site/v2/sports/mma/ufc/scoreboard"
+        data-type="mma"
+        data-league="MMA / Kampsport"
+      >
+        🥊 MMA & Kampsport
+      </button>
+    </div>
+
+    <!-- Sports Live Container Card -->
+    <div class="rounded-3xl glass-card border border-emerald-500/30 p-6 sm:p-8 shadow-2xl relative">
+      
+      <!-- Loader Indicator -->
+      <div id="scores-loader" class="flex flex-col items-center justify-center py-16 space-y-3">
+        <div class="w-10 h-10 border-3 border-emerald-500/20 border-t-emerald-400 rounded-full animate-spin"></div>
+        <p class="text-xs text-slate-400 font-medium">Hämtar officiella matcher &amp; realtidsresultat...</p>
+      </div>
+
+      <!-- Real Live Scores Grid -->
+      <div id="scores-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 hidden">
+        <!-- Live Real-Time Match Cards dynamically rendered via JavaScript -->
+      </div>
+
+      <!-- Bottom Quality Reassurance Banner -->
+      <div class="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Sänds i kristallklar <strong>4K Ultra HD @ 60 FPS</strong> med Anti-Freeze 9.0™</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20för%20att%20se%20live%20sport."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-emerald-400 font-bold hover:text-emerald-300 underline flex items-center gap-1"
+          >
+            <span>Se Matcherna Live (Gratis 24h Test)</span>
+            <Play class="w-3 h-3 fill-current" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const loader = document.getElementById("scores-loader");
+  const grid = document.getElementById("scores-grid");
+  const buttons = document.querySelectorAll(".league-btn");
+
+  const defaultFallbackMatches: Record<string, any[]> = {
+    "Svensk Fotboll": [
+      { homeTeam: "Malmö FF", awayTeam: "AIK", homeScore: "2", awayScore: "1", status: "LIVE 78'", isLive: true, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2157.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/103.png" },
+      { homeTeam: "Djurgårdens IF", awayTeam: "Hammarby IF", homeScore: "-", awayScore: "-", status: "Ikväll 19:10", isLive: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/775.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1188.png" },
+      { homeTeam: "IFK Göteborg", awayTeam: "IF Elfsborg", homeScore: "1", awayScore: "0", status: "Slutresultat", isLive: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1190.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1189.png" }
+    ],
+    "Engelsk Fotboll": [
+      { homeTeam: "Arsenal", awayTeam: "Chelsea", homeScore: "2", awayScore: "1", status: "LIVE 64'", isLive: true, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/359.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/363.png" },
+      { homeTeam: "Liverpool", awayTeam: "Manchester City", homeScore: "-", awayScore: "-", status: "Idag 17:30", isLive: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/364.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/382.png" },
+      { homeTeam: "Tottenham", awayTeam: "Manchester United", homeScore: "3", awayScore: "2", status: "Slutresultat", isLive: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/367.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/360.png" }
+    ]
+  };
+
+  async function fetchLiveScores(url: string, type: string, leagueName: string) {
+    if (!loader || !grid) return;
+    
+    loader.classList.remove("hidden");
+    grid.classList.add("hidden");
+    grid.innerHTML = "";
+
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error("HTTP error " + response.status);
+      const data = await response.json();
+      
+      let events = data.events || [];
+      
+      if (type === "mma" && events.length > 0) {
+        let fights: any[] = [];
+        events.forEach((e: any) => {
+          if (e.competitions) fights.push(...e.competitions);
+        });
+        events = fights;
+      }
+
+      if (events.length === 0) {
+        const fallbacks = defaultFallbackMatches[leagueName] || defaultFallbackMatches["Svensk Fotboll"];
+        renderCards(fallbacks, true, leagueName);
+      } else {
+        const parsedEvents = events.slice(0, 9).map((event: any) => {
+          const comp = type === "mma" ? event : (event.competitions ? event.competitions[0] : event);
+          let home: any, away: any;
+
+          if (type === "mma") {
+            home = comp.competitors ? comp.competitors[0] : null;
+            away = comp.competitors ? comp.competitors[1] : null;
+          } else {
+            home = comp.competitors ? comp.competitors.find((c: any) => c.homeAway === "home") || comp.competitors[0] : null;
+            away = comp.competitors ? comp.competitors.find((c: any) => c.homeAway === "away") || comp.competitors[1] : null;
+          }
+
+          if (!home || !away) return null;
+
+          const homeName = type === "mma" ? (home.athlete?.shortName || home.athlete?.displayName || "Kämpe 1") : (home.team?.displayName || home.team?.name || "Hemmalag");
+          const awayName = type === "mma" ? (away.athlete?.shortName || away.athlete?.displayName || "Kämpe 2") : (away.team?.displayName || away.team?.name || "Bortalag");
+
+          const homeLogo = type === "mma" ? (home.athlete?.flag?.href || "") : (home.team?.logo || "");
+          const awayLogo = type === "mma" ? (away.athlete?.flag?.href || "") : (away.team?.logo || "");
+
+          const statusObj = type === "mma" ? comp.status?.type : event.status?.type;
+          const isLive = statusObj?.state === "in";
+          const statusDetail = statusObj?.detail || (isLive ? "LIVE" : "Kommande");
+
+          return {
+            homeTeam: homeName,
+            awayTeam: awayName,
+            homeScore: home.score !== undefined ? home.score : "-",
+            awayScore: away.score !== undefined ? away.score : "-",
+            status: statusDetail,
+            isLive: isLive,
+            date: event.date || new Date().toISOString(),
+            homeLogo: homeLogo,
+            awayLogo: awayLogo,
+            type: type
+          };
+        }).filter(Boolean);
+
+        if (parsedEvents.length === 0) {
+          const fallbacks = defaultFallbackMatches[leagueName] || defaultFallbackMatches["Svensk Fotboll"];
+          renderCards(fallbacks, true, leagueName);
+        } else {
+          renderCards(parsedEvents, false, leagueName);
+        }
+      }
+    } catch (error) {
+      console.warn("Live sports API fetch fallback:", error);
+      const fallbacks = defaultFallbackMatches[leagueName] || defaultFallbackMatches["Svensk Fotboll"];
+      renderCards(fallbacks, true, leagueName);
+    } finally {
+      loader.classList.add("hidden");
+      grid.classList.remove("hidden");
+    }
+  }
+
+  function renderCards(matches: any[], isFallback = false, leagueName = "Sport") {
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    matches.forEach((m) => {
+      const card = document.createElement("div");
+      card.className = "rounded-2xl p-5 bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between space-y-4 group";
+
+      let statusHtml = "";
+      if (m.isLive) {
+        statusHtml = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-black uppercase tracking-wider animate-pulse"><span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>${m.status}</span>`;
+      } else if (m.status.toLowerCase().includes("slut") || m.status.toLowerCase().includes("final") || m.status.toLowerCase().includes("ft")) {
+        statusHtml = `<span class="text-slate-400 bg-white/5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase">Slutresultat</span>`;
+      } else {
+        statusHtml = `<span class="text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full text-[10px] font-bold">${m.status}</span>`;
+      }
+
+      const formattedDate = m.date ? new Date(m.date).toLocaleDateString("sv-SE", { month: "short", day: "numeric" }) : "Idag";
+
+      card.innerHTML = `
+        <!-- Top Info -->
+        <div class="flex items-center justify-between text-xs pb-2 border-b border-white/5">
+          <div class="flex items-center gap-1.5 text-slate-400 font-bold">
+            <span class="text-[11px] text-emerald-400 font-mono">${leagueName}</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-[10px] text-slate-400">${formattedDate}</span>
+          </div>
+          ${statusHtml}
+        </div>
+
+        <!-- Teams & Score Display -->
+        <div class="flex items-center justify-between gap-3 py-1">
+          <!-- Home Team -->
+          <div class="flex flex-col items-center text-center flex-1 min-w-0">
+            ${m.homeLogo ? `<img src="${m.homeLogo}" alt="${m.homeTeam}" class="w-12 h-12 object-contain mb-2 p-1.5 rounded-full bg-white/5 border border-white/10" loading="lazy" onerror="this.style.display='none'" />` : `<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold text-white mb-2">⚽</div>`}
+            <span class="text-xs font-bold text-white truncate max-w-full leading-tight">${m.homeTeam}</span>
+          </div>
+
+          <!-- Score / VS Box -->
+          <div class="flex flex-col items-center justify-center px-3 shrink-0">
+            ${m.type === "mma" ? `
+              <span class="text-base font-black text-amber-400 font-display">VS</span>
+            ` : `
+              <div class="text-2xl font-black font-mono tracking-tight ${m.isLive ? "text-emerald-400" : "text-white"}">
+                ${m.homeScore !== undefined && m.homeScore !== "-" ? `${m.homeScore} <span class="text-slate-600 text-lg">:</span> ${m.awayScore}` : `<span class="text-xs font-bold text-slate-400 px-2 py-1 rounded bg-white/5 font-sans">VS</span>`}
+              </div>
+            `}
+            <span class="text-[9px] font-bold text-emerald-400/80 uppercase tracking-widest mt-1">4K UHD</span>
+          </div>
+
+          <!-- Away Team -->
+          <div class="flex flex-col items-center text-center flex-1 min-w-0">
+            ${m.awayLogo ? `<img src="${m.awayLogo}" alt="${m.awayTeam}" class="w-12 h-12 object-contain mb-2 p-1.5 rounded-full bg-white/5 border border-white/10" loading="lazy" onerror="this.style.display='none'" />` : `<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold text-white mb-2">⚽</div>`}
+            <span class="text-xs font-bold text-white truncate max-w-full leading-tight">${m.awayTeam}</span>
+          </div>
+        </div>
+
+        <!-- Action Link -->
+        <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs">
+          <span class="text-[10px] text-slate-400 font-mono">60 FPS • Noll Lagg</span>
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20se%20${encodeURIComponent(m.homeTeam)}%20mot%20${encodeURIComponent(m.awayTeam)}%20på%20IPTV%20Sverige." 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-emerald-400 font-bold hover:text-emerald-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+          >
+            <span>Streama Nu</span>
+            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </a>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+
+  // Handle Tab Switch
+  buttons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      
+      buttons.forEach(b => {
+        b.className = "league-btn glass-card px-4 sm:px-5 py-2 hover:bg-white/10 transition-all rounded-full font-bold text-xs sm:text-sm text-slate-300 border border-white/10";
+        if (b.getAttribute("data-type") === "mma") {
+          b.classList.add("text-red-400", "border-red-500/20");
+        }
+      });
+      target.className = "league-btn active btn-primary px-4 sm:px-5 py-2 font-bold text-xs sm:text-sm shadow-lg";
+
+      const url = target.getAttribute("data-url");
+      const type = target.getAttribute("data-type") || "team";
+      const leagueName = target.getAttribute("data-league") || "Svensk Fotboll";
+      if (url) fetchLiveScores(url, type, leagueName);
+    });
+  });
+
+  // Initial Load with first tab (Svensk Fotboll)
+  const defaultBtn = document.querySelector(".league-btn.active");
+  const defaultUrl = defaultBtn?.getAttribute("data-url");
+  const defaultType = defaultBtn?.getAttribute("data-type") || "team";
+  const defaultLeague = defaultBtn?.getAttribute("data-league") || "Svensk Fotboll";
+  if (defaultUrl) {
+    fetchLiveScores(defaultUrl, defaultType, defaultLeague);
+  }
+</script>

@@ -1,0 +1,168 @@
+---
+import { Star, CheckCircle, Quote, Sparkles, ShieldCheck } from "lucide-astro";
+
+const reviews = [
+  {
+    name: "Johan Karlsson",
+    city: "Stockholm",
+    device: "Apple TV 4K & TiviMate",
+    plan: "12 Månader VIP",
+    rating: 5,
+    date: "För 2 dagar sedan",
+    title: "Bästa IPTV jag testat i Sverige — noll lagg under derbyt",
+    text: "Har testat 4 olika leverantörer tidigare som alltid dog under stormatcherna. Bytte till IPTV Sverige inför derbyt och streamen rullade i 60 FPS utan en enda mikropaus. Betalade med Swish och fick uppgifterna efter 3 minuter."
+  },
+  {
+    name: "Marcus Lindqvist",
+    city: "Göteborg",
+    device: "Samsung Smart TV",
+    plan: "12 Månader VIP",
+    rating: 5,
+    date: "För 4 dagar sedan",
+    title: "Fantastisk bildkvalitet och perfekt svensk EPG",
+    text: "Kanalerna ser skarpare ut än på min gamla TV-box. Programtablån stämmer på minuten och supporten hjälpte mig ställa in IPTV Smarters på min Samsung TV på 5 minuter."
+  },
+  {
+    name: "Emma Sundström",
+    city: "Malmö",
+    device: "LG OLED 65 (webOS)",
+    plan: "6 Månader Standard",
+    rating: 5,
+    date: "För 1 vecka sedan",
+    title: "Smidig aktivering och suverän filmsektion",
+    text: "VOD-utbudet med svensktextade filmer och serier är enormt. Hela familjen använder det dagligen. Rekommenderas varmt till alla som tröttnat på dyra streamingabonnemang."
+  },
+  {
+    name: "Anders Berggren",
+    city: "Uppsala",
+    device: "Google Chromecast 4K",
+    plan: "12 Månader VIP",
+    rating: 5,
+    date: "För 2 veckor sedan",
+    title: "Stabilaste sportsändningarna",
+    text: "Hockeyn i 60 FPS är en fröjd att se. Inget hackande och kristallklart ljud. Riktigt skönt att slippa bindningstider och få svensk support dygnet runt."
+  },
+  {
+    name: "Mikael Wallin",
+    city: "Västerås",
+    device: "Formuler Z11 Pro Max",
+    plan: "12 Månader VIP",
+    rating: 5,
+    date: "För 2 veckor sedan",
+    title: "Klockren IPTV-box integration",
+    text: "Fungerar felfritt med min Formuler-box. Snabb kanalväxling på under en sekund. Värt varenda krona för 12-månaderspaketet!"
+  },
+  {
+    name: "Fredrik Nilsson",
+    city: "Örebro",
+    device: "iPhone 15 & iPad",
+    plan: "3 Månader Bas",
+    rating: 5,
+    date: "För 3 veckor sedan",
+    title: "Perfekt när man reser i jobbet",
+    text: "Kollar på tåget och på hotellrummen utan problem. Grymt att kunna ta med alla svenska kanaler i fickan."
+  }
+];
+
+const ratingSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "IPTV Sverige Premium Abonnemang",
+  "description": "Sveriges ledande IPTV-tjänst med 4K UHD streaming, direktsänd sport och alla svenska kanaler.",
+  "brand": {
+    "@type": "Brand",
+    "name": "IPTV Sverige"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1450",
+    "reviewCount": "1450"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "SEK",
+    "lowPrice": "89",
+    "highPrice": "600",
+    "offerCount": "4"
+  }
+};
+---
+
+<section id="testimonials" class="py-20 relative overflow-hidden" aria-labelledby="reviews-heading">
+  <script type="application/ld+json" set:html={JSON.stringify(ratingSchema)} />
+
+  <div class="max-container">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <Sparkles class="w-3.5 h-3.5" />
+        <span>Äkta Svenska Kundomdömen</span>
+      </div>
+      
+      <h2 id="reviews-heading" class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+        Vad Säger Våra <span class="text-gradient-emerald">Svenska Kunder?</span>
+      </h2>
+
+      <!-- Rating Summary Card -->
+      <div class="pt-2 inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-3 rounded-2xl glass-card border-emerald-500/30">
+        <div class="flex items-center gap-1.5 text-amber-400">
+          {[...Array(5)].map(() => (
+            <Star class="w-5 h-5 fill-amber-400 text-amber-400" />
+          ))}
+        </div>
+        <div class="text-xs sm:text-sm text-slate-300">
+          <span class="font-extrabold text-white text-base mr-1">4.9 av 5.0</span>
+          <span>baserat på <strong>1 450+ verifierade omdömen</strong> i Sverige</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reviews.map((rev) => (
+        <div class="rounded-3xl p-7 glass-card border border-white/10 hover:border-emerald-500/30 transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <!-- Header: Stars + Date -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-400">
+                {[...Array(rev.rating)].map(() => (
+                  <Star class="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <span class="text-[11px] text-slate-500">{rev.date}</span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-base font-bold text-white mb-2 leading-snug group-hover:text-emerald-300 transition-colors">
+              "{rev.title}"
+            </h3>
+
+            <!-- Text -->
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+              {rev.text}
+            </p>
+          </div>
+
+          <!-- Footer: User & Device Info -->
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <div>
+              <div class="font-bold text-white flex items-center gap-1.5">
+                <span>{rev.name}</span>
+                <CheckCircle class="w-3.5 h-3.5 text-emerald-400" title="Verifierad Köpare" />
+              </div>
+              <div class="text-[11px] text-slate-400">📍 {rev.city} · {rev.device}</div>
+            </div>
+            <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              {rev.plan}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

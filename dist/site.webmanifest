@@ -1,0 +1,16 @@
+{
+  "name": "IPTV Sverige",
+  "short_name": "IPTV Sverige",
+  "description": "Sveriges ledande leverantör av IPTV med stabila servrar och hög bildkvalitet.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06060b",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

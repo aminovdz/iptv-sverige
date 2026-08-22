@@ -1,0 +1,95 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Hero from "../components/Hero.astro";
+import LiveScores from "../components/LiveScores.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import PricingCard from "../components/PricingCard.astro";
+import ReferralBanner from "../components/ReferralBanner.astro";
+import UserReviewsSection from "../components/UserReviewsSection.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import SupportedDevices from "../components/SupportedDevices.astro";
+import CitiesList from "../components/CitiesList.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FAQSection from "../components/FAQSection.astro";
+import FeaturedGuides from "../components/FeaturedGuides.astro";
+import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import GroupsPopup from "../components/GroupsPopup.astro";
+import ExitPopup from "../components/ExitPopup.astro";
+import SocialPopup from "../components/SocialPopup.astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Bästa IPTV Appen", url: "/basta-iptv-appar" }
+];
+---
+
+<Layout 
+  title="Bästa IPTV Appen 2026 — Topp 5 Appar för Smart TV, Android & Apple TV" 
+  description="Vilken IPTV app är bäst i Sverige? Komplett guide till TiviMate, IPTV Smarters Pro, Apple TV och Smart TV appar med gratis spellistor och M3U support."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/basta-iptv-appar" />
+
+  <Hero 
+    h1Title="Bästa IPTV Appen 2026 — Topp 5 Appar för Smart TV, Apple TV & Android"
+    subtitle="Letar du efter den smidigaste appen för att streama svensk IPTV? Vi guidar dig till marknadens bästa spelare med stöd för 4K, 60 FPS och fullständig svensk programguide (EPG)."
+    badgeText="📱 APP GUIDE & STREAMING 2026"
+    primaryKeyword="Bästa IPTV appen"
+  />
+
+  <div class="max-container my-8">
+    <img 
+      src="/images/devices-mockup.svg" 
+      alt="Bästa IPTV appen 2026 för Smart TV, Apple TV 4K och Android TV" 
+      class="w-full max-w-4xl mx-auto rounded-3xl border border-white/10 shadow-2xl"
+      loading="lazy"
+      width="900"
+      height="500"
+    />
+  </div>
+
+  <LiveScores />
+
+  <SupportedDevices />
+
+  <FeatureGrid 
+    title="Optimerad För Marknadens Snabbaste IPTV-Appar"
+    subtitle="Våra servrar är förkonfigurerade för blixtsnabb synkning med TiviMate, IPTV Smarters, XCIPTV och Apple TV spelare."
+  />
+
+  <PricingCard />
+
+  <ReferralBanner />
+
+  <UserReviewsSection />
+
+  <ProcessSteps />
+
+  <CitiesList />
+
+  <ContactForm />
+
+  <FAQSection 
+    title="Vanliga Frågor Om IPTV Appar & Installation"
+    subtitle="Svar på hur du laddar ner, installerar och konfigurerar IPTV på din specifika TV eller mediaspelare."
+  />
+
+  <CTASection 
+    title="Få Dina Inloggningsuppgifter Till Valfri App På 5 Min"
+    subtitle="Beställ ditt abonnemang och få M3U-länk samt Xtream Codes skickade direkt till din WhatsApp och e-post."
+    primaryBtnText="Skaffa Abonnemang Nu"
+    secondaryBtnText="Hjälp Mig Installera via WhatsApp"
+  />
+
+  <Footer slot="footer" />
+
+  <Fragment slot="widgets">
+    <FloatingWhatsApp />
+    <GroupsPopup />
+    <ExitPopup />
+    <SocialPopup />
+  </Fragment>
+</Layout>

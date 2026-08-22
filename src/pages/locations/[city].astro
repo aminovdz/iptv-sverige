@@ -1,0 +1,155 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
+import Hero from "../../components/Hero.astro";
+import LiveScores from "../../components/LiveScores.astro";
+import FeatureGrid from "../../components/FeatureGrid.astro";
+import PricingCard from "../../components/PricingCard.astro";
+import ReferralBanner from "../../components/ReferralBanner.astro";
+import UserReviewsSection from "../../components/UserReviewsSection.astro";
+import ProcessSteps from "../../components/ProcessSteps.astro";
+import SupportedDevices from "../../components/SupportedDevices.astro";
+import CitiesList from "../../components/CitiesList.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import FAQSection from "../../components/FAQSection.astro";
+import CTASection from "../../components/CTASection.astro";
+import Footer from "../../components/Footer.astro";
+import FloatingWhatsApp from "../../components/FloatingWhatsApp.astro";
+import GroupsPopup from "../../components/GroupsPopup.astro";
+import ExitPopup from "../../components/ExitPopup.astro";
+import SocialPopup from "../../components/SocialPopup.astro";
+
+export function getStaticPaths() {
+  const swedishCities = [
+    { city: "stockholm", name: "Stockholm", region: "Stockholms län", ping: "4ms", isHub: true },
+    { city: "goteborg", name: "Göteborg", region: "Västra Götalands län", ping: "6ms", isHub: true },
+    { city: "malmo", name: "Malmö", region: "Skåne län", ping: "8ms", isHub: true },
+    { city: "uppsala", name: "Uppsala", region: "Uppsala län", ping: "5ms" },
+    { city: "vasteras", name: "Västerås", region: "Västmanlands län", ping: "6ms" },
+    { city: "orebro", name: "Örebro", region: "Örebro län", ping: "7ms" },
+    { city: "linkoping", name: "Linköping", region: "Östergötlands län", ping: "7ms" },
+    { city: "helsingborg", name: "Helsingborg", region: "Skåne län", ping: "8ms" },
+    { city: "jonkoping", name: "Jönköping", region: "Jönköpings län", ping: "8ms" },
+    { city: "norrkoping", name: "Norrköping", region: "Östergötlands län", ping: "7ms" },
+    { city: "lund", name: "Lund", region: "Skåne län", ping: "8ms" },
+    { city: "umea", name: "Umeå", region: "Västerbottens län", ping: "12ms" },
+    { city: "gavle", name: "Gävle", region: "Gävleborgs län", ping: "8ms" },
+    { city: "boras", name: "Borås", region: "Västra Götalands län", ping: "7ms" },
+    { city: "sodertalje", name: "Södertälje", region: "Stockholms län", ping: "5ms" },
+    { city: "eskilstuna", name: "Eskilstuna", region: "Södermanlands län", ping: "6ms" },
+    { city: "karlstad", name: "Karlstad", region: "Värmlands län", ping: "7ms" },
+    { city: "halmstad", name: "Halmstad", region: "Hallands län", ping: "8ms" },
+    { city: "vaxjo", name: "Växjö", region: "Kronobergs län", ping: "8ms" },
+    { city: "sundsvall", name: "Sundsvall", region: "Västernorrlands län", ping: "10ms" }
+  ];
+
+  return swedishCities.map(c => ({
+    params: { city: c.city },
+    props: { cityData: c }
+  }));
+}
+
+const { cityData } = Astro.props;
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Städer", url: "/#cities" },
+  { name: `IPTV ${cityData.name}`, url: `/locations/${cityData.city}` }
+];
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": `IPTV Sverige — ${cityData.name}`,
+  "image": "https://iptv-sverige.org/favicon.svg",
+  "description": `Sveriges mest stabila IPTV-tjänst tillgänglig för hushåll i ${cityData.name} och ${cityData.region}. 4K streaming, direktsänd sport och lokala servrar.`,
+  "areaServed": {
+    "@type": "City",
+    "name": cityData.name,
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": cityData.region
+    }
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": cityData.name,
+    "addressRegion": cityData.region,
+    "addressCountry": "SE"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1450"
+  },
+  "priceRange": "89 SEK - 600 SEK"
+};
+---
+
+<Layout 
+  title={`IPTV ${cityData.name} 2026 — Bästa Svenska IPTV Tjänsten i ${cityData.name}`}
+  description={`Söker du IPTV i ${cityData.name}? Njut av direktsänd sport och 4K-underhållning med ${cityData.ping} latens via lokala servrar. Betala med Swish!`}
+  schema={localBusinessSchema}
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" />
+
+  <!-- 1. Hero with City Injection -->
+  <Hero 
+    city={cityData.name}
+    primaryKeyword={`IPTV ${cityData.name}`}
+    badgeText={`📍 LOKAL CDN-SERVER: ${cityData.name.toUpperCase()} (${cityData.ping})`}
+    subtitle={`Streama alla svenska favoritkanaler, direktsänd sport och internationell sport i ${cityData.name} med 99.9% garanterad upptid och minimal latens (${cityData.ping}). Blixtsnabb aktivering med Swish!`}
+  />
+
+  <!-- 2. Live Scores Widget -->
+  <LiveScores />
+
+  <!-- 3. Local Advantage & Features Grid -->
+  <FeatureGrid 
+    title={`Varför Väljer Tittare i ${cityData.name} IPTV Sverige?`}
+    subtitle={`Med lokala CDN-noder anslutna direkt till de största internetknutpunkterna i Sverige levererar vi marknadens snabbaste kanalväxling i ${cityData.name}.`}
+  />
+
+  <!-- 4. Pricing Tiers -->
+  <PricingCard />
+
+  <!-- 5. Referral Banner -->
+  <ReferralBanner />
+
+  <!-- 6. Verified User Reviews -->
+  <UserReviewsSection />
+
+  <!-- 7. Process Steps -->
+  <ProcessSteps />
+
+  <!-- 8. Supported Devices -->
+  <SupportedDevices />
+
+  <!-- 9. Other Swedish Cities -->
+  <CitiesList />
+
+  <!-- 10. Contact Form -->
+  <ContactForm />
+
+  <!-- 11. FAQ -->
+  <FAQSection 
+    title={`Vanliga Frågor Om IPTV i ${cityData.name}`}
+    subtitle={`Svar på hur tjänsten fungerar via lokala stadsnät och fiberoperatörer i ${cityData.name}.`}
+  />
+
+  <!-- 12. CTA Section -->
+  <CTASection 
+    title={`Börja Streama IPTV i ${cityData.name} Inom 5 Minuter`}
+    subtitle={`Få tillgång till 4K streaming och svensk EPG direkt på din Smart TV eller app i ${cityData.name}.`}
+  />
+
+  <Footer slot="footer" />
+
+  <Fragment slot="widgets">
+    <FloatingWhatsApp />
+    <GroupsPopup />
+    <ExitPopup />
+    <SocialPopup />
+  </Fragment>
+</Layout>

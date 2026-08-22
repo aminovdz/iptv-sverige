@@ -1,0 +1,65 @@
+---
+import { Users, Gift, ArrowRight, Sparkles, CheckCircle2 } from "lucide-astro";
+---
+
+<section class="py-12 relative overflow-hidden" aria-label="Referera en vän">
+  <div class="max-container">
+    <div class="relative rounded-3xl p-8 sm:p-10 glass-card-glow border border-emerald-500/40 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 shadow-xl overflow-hidden">
+      
+      <!-- Decorative Background Circles -->
+      <div class="absolute -right-20 -top-20 w-60 h-60 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -bottom-20 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+        
+        <!-- Left Text & Info -->
+        <div class="space-y-3 text-center lg:text-left max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold uppercase tracking-wider">
+            <Gift class="w-3.5 h-3.5" />
+            <span>Tipsa & Tjäna Gratis Streaming</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-display tracking-tight">
+            Referera En Vän — <span class="text-gradient-emerald">Båda Får 1 Månad Gratis!</span>
+          </h2>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Tipsa en vän, kollega eller familjemedlem om IPTV Sverige. När din vän tecknar ett 6- eller 12-månaders abonnemang får ni båda <strong>1 hel månad gratis</strong> tillagd på ert konto. Det finns ingen gräns för hur många vänner du kan värva!
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs text-slate-200">
+            <span class="flex items-center gap-1.5">
+              <CheckCircle2 class="w-4 h-4 text-emerald-400" /> Obegränsade värvningar
+            </span>
+            <span class="flex items-center gap-1.5">
+              <CheckCircle2 class="w-4 h-4 text-emerald-400" /> Direkt aktivering via support
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Action Button -->
+        <div class="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto">
+          <a 
+            href="/referral" 
+            class="btn-primary text-xs sm:text-sm py-3.5 px-6 font-bold flex items-center justify-center gap-2 whitespace-nowrap shadow-lg"
+          >
+            <Users class="w-4 h-4" />
+            <span>Läs Mer Om Värvningsprogrammet</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20tipsa%20en%20vän%20om%20IPTV%20Sverige%20och%20få%201%20månad%20gratis."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-center text-slate-300 hover:text-emerald-400 underline decoration-slate-600 transition-colors py-1"
+          >
+            Eller tipsa supporten direkt på WhatsApp →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

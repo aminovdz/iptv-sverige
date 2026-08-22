@@ -1,0 +1,131 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  keywords?: string;
+  type?: string;
+  schema?: Record<string, any> | Record<string, any>[];
+  breadcrumbItems?: Array<{ name: string; url: string }>;
+}
+
+const {
+  title,
+  description,
+  image,
+  keywords,
+  type = "website",
+  schema,
+  breadcrumbItems = [{ name: "Hem", url: "/" }]
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, "") : "https://iptv-sverige.org";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IPTV Sverige",
+  "alternateName": ["IPTV-Sverige", "Svensk IPTV", "Castvera IPTV"],
+  "url": siteUrl,
+  "logo": siteUrl + "/favicon.svg",
+  "description": "Sveriges ledande IPTV-leverantör med 4K/UHD streaming, direktsänd sport, film och internationell underhållning utan buffring.",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "contact@iptv-sverige.org",
+      "url": "https://wa.me/18036582620",
+      "availableLanguage": ["Swedish", "English"]
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "technical support",
+      "email": "support@castvera.com",
+      "availableLanguage": ["Swedish", "English"]
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sveavägen 44",
+    "addressLocality": "Stockholm",
+    "postalCode": "111 34",
+    "addressCountry": "SE"
+  },
+  "sameAs": [
+    "https://t.me/castvera_com",
+    "https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "IPTV Sverige",
+  "url": siteUrl,
+  "inLanguage": "sv-SE",
+  "description": "Sveriges ledande förmedlare av IPTV, streaming i 4K UHD och direktsänd sport."
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbItems.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url.startsWith("http") ? item.url : siteUrl + item.url
+  }))
+};
+---
+
+<!doctype html>
+<html lang="sv" class="scroll-smooth">
+  <head>
+    <BaseHead 
+      title={title} 
+      description={description} 
+      image={image} 
+      keywords={keywords}
+      type={type}
+    />
+    
+    <!-- Base Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    
+    <!-- Dynamic Page Schema (Product, FAQPage, Article, etc.) -->
+    {schema && Array.isArray(schema) ? (
+      schema.map((s) => (
+        <script type="application/ld+json" set:html={JSON.stringify(s)} />
+      ))
+    ) : schema ? (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ) : null}
+
+    <slot name="head" />
+  </head>
+  <body class="bg-bg-dark text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="absolute -top-40 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/3 -right-40 w-96 h-96 bg-emerald-600/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 flex flex-col flex-1">
+      <slot name="header" />
+      
+      <main id="main-content" class="flex-1">
+        <slot />
+      </main>
+      
+      <slot name="footer" />
+    </div>
+
+    <!-- Global Floating Widgets Slot -->
+    <slot name="widgets" />
+  </body>
+</html>

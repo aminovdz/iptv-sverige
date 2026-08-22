@@ -1,0 +1,176 @@
+---
+import { Tv, Zap, MessageCircle, Menu, X, ShieldCheck, ChevronRight } from "lucide-astro";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+
+const navLinks = [
+  { name: "Hem", href: "/" },
+  { name: "Testa Gratis (24h)", href: "/testa-iptv" },
+  { name: "Billig IPTV", href: "/billig-iptv" },
+  { name: "Bästa IPTV", href: "/basta-iptv" },
+  { name: "Installera", href: "/installera-iptv" },
+  { name: "Priser", href: "/#pricing" },
+  { name: "Guider", href: "/guides" },
+  { name: "Kontakt", href: "/contact" }
+];
+---
+
+<header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-bg-dark/85 border-b border-glass-border transition-all duration-300">
+  <!-- Top notification bar -->
+  <div class="bg-gradient-to-r from-emerald-950/80 via-emerald-900/60 to-emerald-950/80 border-b border-emerald-500/20 py-1.5 px-4 text-xs font-medium text-emerald-300">
+    <div class="max-container flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+          🇸🇪 ERBJUDANDE
+        </span>
+        <span>Teckna 12 månader idag och få <strong>1 månad extra gratis</strong> via WhatsApp!</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-slate-300">
+        <a href="https://wa.me/18036582620" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 flex items-center gap-1 transition-colors">
+          <MessageCircle class="w-3.5 h-3.5 text-emerald-400" />
+          <span>Support 24/7</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <span class="text-emerald-400 font-semibold flex items-center gap-1">
+          <ShieldCheck class="w-3.5 h-3.5" /> Swish & Klarna aktiverat
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <div class="max-container flex items-center justify-between h-20">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-1" aria-label="IPTV Sverige Hem">
+      <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-500/25 group-hover:scale-105 transition-transform duration-300">
+        <Tv class="w-6 h-6 text-slate-950 stroke-[2.5]" />
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xl font-black tracking-tight text-white font-display flex items-center gap-1">
+          IPTV<span class="text-emerald-400">Sverige</span>
+        </span>
+        <span class="text-[10px] tracking-widest uppercase text-slate-400 font-semibold -mt-1">
+          Nordisk Premium Streaming
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Huvudmeny">
+      {navLinks.map(link => (
+        <a 
+          href={link.href}
+          class:list={[
+            "px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:text-white hover:bg-white/5",
+            currentPath === link.href ? "text-emerald-400 bg-emerald-500/10 font-semibold" : "text-slate-300"
+          ]}
+        >
+          {link.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA Buttons -->
+    <div class="hidden md:flex items-center gap-3">
+      <a 
+        href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20i%2024%20timmar." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="px-4 py-2.5 rounded-full text-xs font-bold text-slate-200 border border-glass-border hover:border-emerald-500/50 hover:bg-white/5 transition-all duration-200 flex items-center gap-1.5"
+        aria-label="Begär gratis 24h provperiod via WhatsApp"
+      >
+        <Zap class="w-3.5 h-3.5 text-amber-400" />
+        <span>Gratis Test 24h</span>
+      </a>
+
+      <a 
+        href="/#pricing" 
+        class="btn-primary text-xs py-2.5 px-5 shadow-emerald-500/30"
+        aria-label="Välj IPTV Abonnemang och börja streama"
+      >
+        <span>Börja Streama</span>
+        <ChevronRight class="w-4 h-4" />
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      id="mobile-menu-btn" 
+      type="button" 
+      class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-glass-border text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      aria-label="Öppna mobilmeny"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <Menu id="menu-icon" class="w-6 h-6" />
+      <X id="close-icon" class="w-6 h-6 hidden" />
+    </button>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div 
+    id="mobile-nav" 
+    class="hidden lg:hidden border-t border-glass-border bg-bg-dark/95 backdrop-blur-2xl px-4 pt-4 pb-8 space-y-4"
+  >
+    <nav class="flex flex-col space-y-1" aria-label="Mobil navigation">
+      {navLinks.map(link => (
+        <a 
+          href={link.href}
+          class="px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-emerald-400 hover:bg-white/5 transition-colors flex items-center justify-between"
+        >
+          <span>{link.name}</span>
+          <ChevronRight class="w-4 h-4 text-slate-500" />
+        </a>
+      ))}
+    </nav>
+
+    <div class="pt-4 border-t border-glass-border flex flex-col gap-3">
+      <a 
+        href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20i%2024%20timmar."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full py-3.5 rounded-xl text-center font-bold text-sm bg-white/5 border border-emerald-500/40 text-emerald-300 hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+      >
+        <Zap class="w-4 h-4 text-amber-400" />
+        Begär Gratis Test 24h
+      </a>
+      <a 
+        href="/#pricing"
+        class="btn-primary w-full py-3.5 text-center text-sm font-bold shadow-lg"
+      >
+        Välj Abonnemang & Kom Igång
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileNav = document.getElementById("mobile-nav");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+
+  if (menuBtn && mobileNav && menuIcon && closeIcon) {
+    menuBtn.addEventListener("click", () => {
+      const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+      mobileNav.classList.toggle("hidden");
+      menuIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    });
+
+    // Close on link click
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.add("hidden");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>

@@ -1,0 +1,34 @@
+# IPTV Sverige — Knowledge File for AI Assistants & LLMs
+
+> Officiell kunskapsresurs och index för IPTV Sverige (https://iptv-sverige.org).
+
+## Översikt (Brand Overview)
+IPTV Sverige är en ledande svensk förmedlingsportal för digital IPTV och streaming. Tjänsten erbjuder 4K Ultra HD-upplösning med 60 FPS sändningar, adaptiv Anti-Freeze 9.0-teknologi för att förhindra buffring vid stora sportevenemang, och servrar placerade i Stockholm för minimal latens.
+
+## Prisstruktur (SEK Pricing)
+- 12 Månader VIP: 600 SEK (50 SEK/månad) — Mest populär + 1 månad extra gratis
+- 6 Månader Standard: 333 SEK (55 SEK/månad)
+- 3 Månader Bas: 222 SEK (74 SEK/månad)
+- 1 Månad Test: 89 SEK (89 SEK/månad)
+- 24h Gratis Provperiod: 0 SEK (Aktiveras via WhatsApp)
+
+## Huvudfunktioner
+- Bildkvalitet: Äkta 4K UHD och 60 FPS för direktsänd sport
+- Programguide: 100% synkad svensk EPG i tidszonen Europe/Stockholm
+- Betalningsmetoder: Swish, Klarna, VISA, Mastercard, Bitcoin / Krypto
+- Garanti: 24 timmars full återbetalningsgaranti
+- Support: Svensk support 24/7 på WhatsApp (+1 803 658 2620) och Telegram (@castvera_com)
+
+## Nyckelsidor (Key URLs)
+- Startsida: https://iptv-sverige.org/
+- Testa Gratis (24h): https://iptv-sverige.org/testa-iptv
+- Billig IPTV: https://iptv-sverige.org/billig-iptv
+- Bästa IPTV Sverige: https://iptv-sverige.org/basta-iptv
+- Installationshub: https://iptv-sverige.org/installera-iptv
+- Guide - Bästa IPTV Appen: https://iptv-sverige.org/guides/basta-iptv-appen
+- Guide - Installera Smart TV: https://iptv-sverige.org/guides/installera-iptv-smart-tv
+- Guide - Varför Laggar IPTV: https://iptv-sverige.org/guides/varfor-laggar-iptv
+- Guide - IPTV Böter & Lagar: https://iptv-sverige.org/guides/iptv-boter-sverige
+- Guide - Vad är IPTV: https://iptv-sverige.org/guides/vad-ar-iptv
+- Jämförelse Nordic IPTV: https://iptv-sverige.org/compare/iptv-sverige-vs-nordic-iptv
+- Jämförelse IPTV King: https://iptv-sverige.org/compare/iptv-sverige-vs-iptvking

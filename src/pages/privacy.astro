@@ -1,0 +1,132 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import { ShieldCheck, Lock, Eye, FileText, Mail } from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Integritetspolicy", url: "/privacy" }
+];
+---
+
+<Layout 
+  title="Integritetspolicy (GDPR) — IPTV Sverige" 
+  description="Läs vår fullständiga integritetspolicy för IPTV Sverige. Vi skyddar dina personuppgifter i enlighet med dataskyddsförordningen (GDPR)."
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/privacy" />
+
+  <div class="py-16 md:py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <!-- Page Header -->
+      <div class="text-center space-y-4 mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <ShieldCheck class="w-3.5 h-3.5" />
+          <span>Dataskydd & GDPR</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight">
+          Integritetspolicy
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Senast uppdaterad: 2026-08-20 · Gäller för iptv-sverige.org
+        </p>
+      </div>
+
+      <!-- Legal Content Body -->
+      <div class="rounded-3xl glass-card border border-white/10 p-8 sm:p-12 space-y-8 text-sm text-slate-300 leading-relaxed">
+        
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">1.</span> Inledning & Personuppgiftsansvar
+          </h2>
+          <p>
+            IPTV Sverige (”vi”, ”oss”, ”vår”) värnar om din personliga integritet och strävar alltid efter att skydda dina personuppgifter på bästa möjliga sätt. Denna integritetspolicy förklarar hur vi samlar in, använder och skyddar dina personuppgifter i enlighet med EU:s dataskyddsförordning (GDPR, General Data Protection Regulation 2016/679) och tillämplig svensk lagstiftning.
+          </p>
+          <p>
+            Personuppgiftsansvarig för behandlingen av dina personuppgifter är IPTV Sverige med kontaktadress på Sveavägen 44, 111 34 Stockholm, Sverige.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">2.</span> Vilka Personuppgifter Samlar Vi In?
+          </h2>
+          <p>Vi samlar endast in uppgifter som är strikt nödvändiga för att leverera och administrera din streamingtjänst:</p>
+          <ul class="list-disc pl-5 space-y-1.5 text-slate-300">
+            <li><strong>Kontaktuppgifter:</strong> E-postadress och eventuellt telefonnummer / WhatsApp-kontakt för orderleverans och kundsupport.</li>
+            <li><strong>Betalningsinformation:</strong> Transaktionsbekräftelse, ordernummer och vald betalningsmetod (Swish-referens, korttransaktions-ID). Vi lagrar aldrig känsliga kortnummer på våra servrar.</li>
+            <li><strong>Teknisk enhetsdata:</strong> Typ av enhet/app (t.ex. Smart TV, Apple TV, TiviMate) för optimerad felsökning vid supportärenden.</li>
+          </ul>
+          <p class="text-xs text-emerald-400 bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
+            🔒 <strong>Noll-loggning av aktivitet:</strong> Vi övervakar, loggar eller sparar aldrig vilken specifik underhållning eller vilka kanaler du tittar på. Din användning är 100% privat.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">3.</span> Ändamål och Laglig Grund
+          </h2>
+          <p>Behandlingen av dina uppgifter sker med stöd av följande rättsliga grunder:</p>
+          <ul class="list-disc pl-5 space-y-1.5 text-slate-300">
+            <li><strong>Fullgörande av avtal:</strong> För att aktivera ditt abonnemang, skicka inloggningsuppgifter (M3U / Xtream Codes) och hantera betalningar.</li>
+            <li><strong>Berättigat intresse:</strong> För att tillhandahålla teknisk support dygnet runt och förebygga driftstörningar.</li>
+            <li><strong>Rättslig förpliktelse:</strong> För att uppfylla bokföringskrav enligt svensk lag.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">4.</span> Hur Länge Sparar Vi Uppgifterna?
+          </h2>
+          <p>
+            Vi sparar dina personuppgifter endast så länge det är nödvändigt för att uppfylla de ändamål för vilka de samlades in, eller så länge ditt abonnemang är aktivt. När ett abonnemang avslutas raderas eller anonymiseras inaktiva kontouppgifter automatiskt.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">5.</span> Dina Rättigheter Enligt GDPR
+          </h2>
+          <p>Som registrerad i Sverige har du enligt GDPR rätt att:</p>
+          <ul class="list-disc pl-5 space-y-1.5 text-slate-300">
+            <li>Begära ett kostnadsfritt registerutdrag över vilka personuppgifter vi behandlar om dig.</li>
+            <li>Begära rättelse av felaktiga eller ofullständiga uppgifter.</li>
+            <li>Begära att dina uppgifter raderas (”rätten att bli bortglömd”).</li>
+            <li>Begära begränsning av behandlingen samt invända mot specifik behandling.</li>
+            <li>Utöva rätten till dataportabilitet.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">6.</span> Cookies och Spårning
+          </h2>
+          <p>
+            Vår webbplats använder minimala sessionscookies för att säkerställa att kundkorgen och språkinställningar fungerar korrekt samt för aggregerad och anonymiserad prestandamätning. Vi säljer aldrig användardata till tredjepartsannonsörer.
+          </p>
+        </section>
+
+        <section class="space-y-3 pt-4 border-t border-white/10">
+          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">7.</span> Kontakta Vårt Dataskyddsombud
+          </h2>
+          <p>
+            Om du har frågor om hur vi hanterar dina personuppgifter eller vill utöva dina rättigheter enligt GDPR, kontakta oss via:
+          </p>
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1 text-xs text-slate-300">
+            <div><strong>E-post:</strong> <a href="mailto:contact@iptv-sverige.org" class="text-emerald-400">contact@iptv-sverige.org</a> / <a href="mailto:support@castvera.com" class="text-emerald-400">support@castvera.com</a></div>
+            <div><strong>WhatsApp:</strong> <a href="https://wa.me/18036582620" class="text-emerald-400">+1 (803) 658-2620</a></div>
+            <div><strong>Postadress:</strong> Sveavägen 44, 111 34 Stockholm, Sverige</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>

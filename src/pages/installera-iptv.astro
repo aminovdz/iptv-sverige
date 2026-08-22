@@ -1,0 +1,280 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Hero from "../components/Hero.astro";
+import SupportedDevices from "../components/SupportedDevices.astro";
+import PricingCard from "../components/PricingCard.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import FAQSection from "../components/FAQSection.astro";
+import FeaturedGuides from "../components/FeaturedGuides.astro";
+import CTASection from "../components/CTASection.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import GroupsPopup from "../components/GroupsPopup.astro";
+import ExitPopup from "../components/ExitPopup.astro";
+import SocialPopup from "../components/SocialPopup.astro";
+import { 
+  Tv, 
+  Smartphone, 
+  Laptop, 
+  CheckCircle2, 
+  Sparkles, 
+  ArrowRight, 
+  MessageCircle, 
+  Download, 
+  Key, 
+  PlayCircle,
+  HelpCircle
+} from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Installera IPTV", url: "/installera-iptv" }
+];
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Hur Man Installerar IPTV på Smart TV, Apple TV, Firestick och Mobil",
+  "description": "Steg-för-steg instruktioner för att installera och konfigurera svensk IPTV på Samsung, LG, Apple TV, Android och PC.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Välj abonnemang och få inloggningsuppgifter",
+      "text": "Beställ ditt paket eller begär ett gratis 24h testkonto på WhatsApp för att få dina Xtream Codes."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Ladda ner IPTV-appen till din TV",
+      "text": "Öppna appbutiken på din TV och ladda ner TiviMate (för Android/Firestick) eller IPTV Smarters (för Samsung/LG/Apple TV)."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Logga in och börja titta",
+      "text": "Skriv in Server URL, Användarnamn och Lösenord. Appen laddar in kanaler och EPG automatiskt."
+    }
+  ]
+};
+---
+
+<Layout 
+  title="Installera IPTV på Smart TV, Apple TV & Fire Stick — Komplett Guide 2026" 
+  description="Lär dig hur du enkelt installerar IPTV på Samsung TV, LG webOS, Apple TV 4K, Amazon Fire Stick, PC och iPad på 5 minuter. Steg-för-steg med Xtream Codes!"
+  schema={howToSchema}
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/installera-iptv" />
+
+  <!-- Hero Section for Installation -->
+  <Hero 
+    h1Title="Installera IPTV på Smart TV, Apple TV & Mobil — Kom Igång På 5 Minuter"
+    subtitle="Enkel steg-för-steg installationsguide för alla dina enheter. Följ våra instruktioner för Samsung, LG, Android TV, Fire Stick, Apple TV och dator."
+    badgeText="🛠️ ENKEL INSTALLATIONSGUIDE 2026"
+    primaryKeyword="Installera IPTV"
+  />
+
+  <!-- Interactive Device Setup Tabs Section -->
+  <section class="py-16 relative overflow-hidden" id="device-guides">
+    <div class="max-container">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <Tv class="w-3.5 h-3.5" />
+          <span>Välj Din Enhet Nedan</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white font-display">
+          Så Installerar Du På Din <span class="text-gradient-emerald">Specifika Enhet</span>
+        </h2>
+        <p class="text-sm text-slate-300">
+          Klicka på din enhet för att se exakta instruktioner och rekommenderade appar.
+        </p>
+      </div>
+
+      <!-- Installation Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. Samsung Smart TV -->
+        <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all space-y-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
+              <Tv class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-white">Samsung Smart TV (Tizen)</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong>Rekommenderad app:</strong> IPTV Smarters Pro eller Smart IPTV.
+            </p>
+            <ol class="space-y-2 text-xs text-slate-300 list-decimal pl-4 leading-relaxed">
+              <li>Öppna <em>Samsung Apps</em> på din TV.</li>
+              <li>Sök efter <strong>IPTV Smarters Pro</strong> och installera.</li>
+              <li>Välj <em>Add User -> Login with Xtream Codes API</em>.</li>
+              <li>Fyll i dina inloggningsuppgifter från oss och klicka på <em>Add User</em>.</li>
+            </ol>
+          </div>
+          <div class="pt-4 border-t border-white/5">
+            <a href="https://wa.me/18036582620?text=Hej!%20Hjälp%20mig%20installera%20IPTV%20på%20Samsung%20TV." target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 font-bold flex items-center gap-1 hover:text-emerald-300">
+              <span>Få installationshjälp på WhatsApp →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. LG Smart TV -->
+        <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all space-y-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 font-bold">
+              <Tv class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-white">LG Smart TV (webOS)</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong>Rekommenderad app:</strong> IPTV Smarters Pro eller IBO Player.
+            </p>
+            <ol class="space-y-2 text-xs text-slate-300 list-decimal pl-4 leading-relaxed">
+              <li>Öppna <em>LG Content Store</em> på din TV.</li>
+              <li>Sök efter <strong>IPTV Smarters Pro</strong> eller <strong>IBO Player</strong>.</li>
+              <li>Installera appen och öppna den.</li>
+              <li>Skriv in dina Xtream Codes-uppgifter och ladda in kanalerna.</li>
+            </ol>
+          </div>
+          <div class="pt-4 border-t border-white/5">
+            <a href="https://wa.me/18036582620?text=Hej!%20Hjälp%20mig%20installera%20IPTV%20på%20LG%20TV." target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 font-bold flex items-center gap-1 hover:text-emerald-300">
+              <span>Få installationshjälp på WhatsApp →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Android TV & Amazon Fire Stick -->
+        <div class="p-8 rounded-3xl glass-card-glow border-2 border-emerald-500/50 bg-gradient-to-b from-slate-900 to-emerald-950/30 space-y-5 flex flex-col justify-between relative">
+          <div class="absolute -top-3 right-4 px-3 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-black text-[10px] uppercase">
+            BÄSTA UPPLEVELSEN
+          </div>
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold">
+              <Tv class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-white">Android TV &amp; Fire Stick</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong>Rekommenderad app:</strong> <span class="text-emerald-400 font-bold">TiviMate IPTV Player</span> (Testvinnare).
+            </p>
+            <ol class="space-y-2 text-xs text-slate-300 list-decimal pl-4 leading-relaxed">
+              <li>Öppna <em>Google Play Store</em> på TV:n eller <em>Downloader</em> på Fire Stick.</li>
+              <li>Installera <strong>TiviMate IPTV Player</strong>.</li>
+              <li>Välj <em>Lägg till spellista -> Xtream Codes</em>.</li>
+              <li>Fyll i serveradress, användarnamn och lösenord för blixtsnabb 60 FPS streaming.</li>
+            </ol>
+          </div>
+          <div class="pt-4 border-t border-white/10">
+            <a href="/guides/basta-iptv-appen" class="text-xs text-emerald-300 font-bold flex items-center gap-1 hover:text-emerald-200">
+              <span>Läs vår TiviMate-guide →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Apple TV 4K & iPhone / iPad -->
+        <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all space-y-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold">
+              <Smartphone class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-white">Apple TV 4K, iPhone &amp; iPad</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong>Rekommenderad app:</strong> iPlayTV, GSE Smart IPTV eller IPTV Smarters.
+            </p>
+            <ol class="space-y-2 text-xs text-slate-300 list-decimal pl-4 leading-relaxed">
+              <li>Öppna <em>App Store</em> på din Apple-enhet.</li>
+              <li>Ladda ner <strong>iPlayTV</strong> eller <strong>IPTV Smarters</strong>.</li>
+              <li>Klistra in din M3U-länk eller välj Xtream Codes API.</li>
+              <li>Njut av synkroniserade favoritkanaler via iCloud.</li>
+            </ol>
+          </div>
+          <div class="pt-4 border-t border-white/5">
+            <a href="https://wa.me/18036582620?text=Hej!%20Hjälp%20mig%20installera%20IPTV%20på%20Apple%20TV." target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 font-bold flex items-center gap-1 hover:text-emerald-300">
+              <span>Få hjälp för Apple TV på WhatsApp →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Windows & Mac Dator -->
+        <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-emerald-500/40 transition-all space-y-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold">
+              <Laptop class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-white">Windows &amp; Mac Dator</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong>Rekommenderad app:</strong> IPTV Smarters Pro Desktop eller VLC Media Player.
+            </p>
+            <ol class="space-y-2 text-xs text-slate-300 list-decimal pl-4 leading-relaxed">
+              <li>Ladda ner <strong>IPTV Smarters Pro</strong> för Windows/Mac eller <strong>VLC</strong>.</li>
+              <li>Kör installationsprogrammet och öppna appen.</li>
+              <li>Logga in med dina Xtream Codes.</li>
+              <li>Titta på alla svenska kanaler direkt i webbläsaren eller skrivbordsappen.</li>
+            </ol>
+          </div>
+          <div class="pt-4 border-t border-white/5">
+            <a href="https://wa.me/18036582620?text=Hej!%20Hjälp%20mig%20installera%20IPTV%20på%20datorn." target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 font-bold flex items-center gap-1 hover:text-emerald-300">
+              <span>Få datorlänk på WhatsApp →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Personlig Supporthjälp -->
+        <div class="p-8 rounded-3xl bg-gradient-to-br from-emerald-950/80 to-slate-900 border border-emerald-500/40 space-y-5 flex flex-col justify-between text-center">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+              <HelpCircle class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-white">Behöver Du Hjälp?</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Vårt svenska supportteam guidar dig steg för steg över WhatsApp tills allting fungerar perfekt på din skärm.
+            </p>
+          </div>
+          <a 
+            href="https://wa.me/18036582620?text=Hej!%20Jag%20behöver%20personlig%20hjälp%20med%20att%20installera%20IPTV." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary py-3.5 px-4 text-xs font-bold w-full flex items-center justify-center gap-2"
+          >
+            <MessageCircle class="w-4 h-4" />
+            <span>Starta WhatsApp Support</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Supported Devices Component -->
+  <SupportedDevices />
+
+  <!-- Pricing Cards -->
+  <PricingCard />
+
+  <!-- Process Steps -->
+  <ProcessSteps />
+
+  <!-- Featured Guides -->
+  <FeaturedGuides />
+
+  <!-- FAQ -->
+  <FAQSection 
+    title="Vanliga Frågor Om Installation & Appar"
+    subtitle="Svar på hur Xtream Codes, M3U-länkar och EPG fungerar."
+  />
+
+  <!-- Final CTA -->
+  <CTASection 
+    title="Redo Att Installera IPTV På 5 Minuter?"
+    subtitle="Beställ ditt abonnemang nu eller testa gratis i 24 timmar via WhatsApp."
+    primaryBtnText="Skaffa Abonnemang Nu"
+    secondaryBtnText="Begär 24h Testkonto"
+  />
+
+  <Footer slot="footer" />
+
+  <Fragment slot="widgets">
+    <FloatingWhatsApp />
+    <GroupsPopup />
+    <ExitPopup />
+    <SocialPopup />
+  </Fragment>
+</Layout>

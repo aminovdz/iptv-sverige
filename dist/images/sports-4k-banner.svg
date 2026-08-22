@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <defs>
+    <linearGradient id="sportsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06060b" />
+      <stop offset="50%" stop-color="#0a1811" />
+      <stop offset="100%" stop-color="#06060b" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="400" rx="24" fill="url(#sportsBg)" stroke="rgba(16,185,129,0.3)" stroke-width="2" />
+  
+  <g transform="translate(60, 70)">
+    <rect x="0" y="0" width="220" height="34" rx="17" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" />
+    <text x="20" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#34d399">⚽ DIREKTSÄND SPORT I 60 FPS</text>
+    
+    <text x="0" y="90" font-family="Outfit, Inter, sans-serif" font-size="44" font-weight="900" fill="#ffffff">Live Sport &amp; Ishockey i 4K UHD</text>
+    <text x="0" y="135" font-family="Inter, sans-serif" font-size="18" fill="#94a3b8">Upplev varje mål, tackling och avgörande ögonblick utan fördröjning.</text>
+    <text x="0" y="165" font-family="Inter, sans-serif" font-size="18" fill="#94a3b8">Anti-Freeze 9.0 tekniken garanterar noll buffring vid hög belastning.</text>
+    
+    <g transform="translate(0, 210)">
+      <rect x="0" y="0" width="180" height="42" rx="12" fill="#10b981" />
+      <text x="28" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#020408">✓ 99.9% Upptid</text>
+
+      <rect x="200" y="0" width="180" height="42" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" />
+      <text x="228" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">✓ Svensk EPG</text>
+
+      <rect x="400" y="0" width="180" height="42" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" />
+      <text x="428" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">✓ 0.5s Kanalbyte</text>
+    </g>
+  </g>
+</svg>
