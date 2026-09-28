@@ -19,6 +19,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import GroupsPopup from "../components/GroupsPopup.astro";
 import ExitPopup from "../components/ExitPopup.astro";
 import SocialPopup from "../components/SocialPopup.astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" },
@@ -27,23 +28,23 @@ const breadcrumbs = [
 ---
 
 <Layout 
-  title="Bästa IPTV Appen 2026 — Topp 5 Appar för Smart TV, Android & Apple TV" 
+  title={`Bästa IPTV Appen ${CURRENT_YEAR} — Topp 5 Appar för Smart TV, Android & Apple TV`} 
   description="Vilken IPTV app är bäst i Sverige? Komplett guide till TiviMate, IPTV Smarters Pro, Apple TV och Smart TV appar med gratis spellistor och M3U support."
   breadcrumbItems={breadcrumbs}
 >
   <StickyHeader slot="header" currentPath="/basta-iptv-appar" />
 
   <Hero 
-    h1Title="Bästa IPTV Appen 2026 — Topp 5 Appar för Smart TV, Apple TV & Android"
+    h1Title={`Bästa IPTV Appen ${CURRENT_YEAR} — Topp 5 Appar för Smart TV, Apple TV & Android`}
     subtitle="Letar du efter den smidigaste appen för att streama svensk IPTV? Vi guidar dig till marknadens bästa spelare med stöd för 4K, 60 FPS och fullständig svensk programguide (EPG)."
-    badgeText="📱 APP GUIDE & STREAMING 2026"
+    badgeText={`📱 APP GUIDE & STREAMING ${CURRENT_YEAR}`}
     primaryKeyword="Bästa IPTV appen"
   />
 
   <div class="max-container my-8">
     <img 
       src="/images/devices-mockup.svg" 
-      alt="Bästa IPTV appen 2026 för Smart TV, Apple TV 4K och Android TV" 
+      alt={`Bästa IPTV appen ${CURRENT_YEAR} för Smart TV, Apple TV 4K och Android TV`} 
       class="w-full max-w-4xl mx-auto rounded-3xl border border-white/10 shadow-2xl"
       loading="lazy"
       width="900"

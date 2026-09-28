@@ -19,6 +19,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import GroupsPopup from "../components/GroupsPopup.astro";
 import ExitPopup from "../components/ExitPopup.astro";
 import SocialPopup from "../components/SocialPopup.astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" }
@@ -50,7 +51,7 @@ const homeProductSchema = {
 ---
 
 <Layout 
-  title="IPTV Sverige 2026 — Streama Svensk TV & Sport i 4K & 8K" 
+  title={`IPTV Sverige ${CURRENT_YEAR} — Streama Svensk TV & Sport i 4K & 8K`} 
   description="Upplev Sveriges mest stabila IPTV-tjänst med 99.9% drifttid. Se direktsänd sport, film & serier i 4K UHD utan buffring. Testa gratis 24h & betala tryggt med Swish!"
   schema={homeProductSchema}
   breadcrumbItems={breadcrumbs}

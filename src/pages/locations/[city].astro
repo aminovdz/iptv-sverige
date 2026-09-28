@@ -18,6 +18,7 @@ import FloatingWhatsApp from "../../components/FloatingWhatsApp.astro";
 import GroupsPopup from "../../components/GroupsPopup.astro";
 import ExitPopup from "../../components/ExitPopup.astro";
 import SocialPopup from "../../components/SocialPopup.astro";
+import { CURRENT_YEAR } from "../../utils/date";
 
 export function getStaticPaths() {
   const swedishCities = [
@@ -87,7 +88,7 @@ const localBusinessSchema = {
 ---
 
 <Layout 
-  title={`IPTV ${cityData.name} 2026 — Bästa Svenska IPTV Tjänsten i ${cityData.name}`}
+  title={`IPTV ${cityData.name} ${CURRENT_YEAR} — Bästa Svenska IPTV Tjänsten i ${cityData.name}`}
   description={`Söker du IPTV i ${cityData.name}? Njut av direktsänd sport och 4K-underhållning med ${cityData.ping} latens via lokala servrar. Betala med Swish!`}
   schema={localBusinessSchema}
   breadcrumbItems={breadcrumbs}

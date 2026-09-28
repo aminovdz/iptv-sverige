@@ -1,7 +1,8 @@
 ---
 import { Tv, MessageCircle, Send, Mail, MapPin, ShieldCheck, Heart, ExternalLink } from "lucide-astro";
+import { CURRENT_YEAR } from "../utils/date";
 
-const currentYear = new Date().getFullYear();
+const currentYear = CURRENT_YEAR;
 
 const swedishCities = [
   { name: "Stockholm", slug: "stockholm" },
@@ -23,6 +24,7 @@ const swedishCities = [
 
 const quickLinks = [
   { name: "Startsida", href: "/" },
+  { name: "Live Score Match Center", href: "/livescore" },
   { name: "Testa IPTV Gratis (24h)", href: "/testa-iptv" },
   { name: "Billig IPTV (Från 50 kr/mån)", href: "/billig-iptv" },
   { name: "Bästa IPTV Sverige", href: "/basta-iptv" },
@@ -223,7 +225,7 @@ const legalLinks = [
     <!-- Bottom Copyright Row -->
     <div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
       <p>
-        © {currentYear} <strong>IPTV Sverige</strong> (iptv-sverige.org). Alla rättigheter förbehållna.
+        © <span data-dynamic-year>{currentYear}</span> <strong>IPTV Sverige</strong> (iptv-sverige.org). Alla rättigheter förbehållna.
       </p>
       <div class="flex items-center gap-4 text-slate-300">
         <span>Byggd för Core Web Vitals ⚡</span>

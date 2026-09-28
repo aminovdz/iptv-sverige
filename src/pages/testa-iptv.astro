@@ -20,6 +20,7 @@ import GroupsPopup from "../components/GroupsPopup.astro";
 import ExitPopup from "../components/ExitPopup.astro";
 import SocialPopup from "../components/SocialPopup.astro";
 import { Zap, Clock, ShieldCheck, CheckCircle2, MessageCircle, Sparkles, Tv, ArrowRight } from "lucide-astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" },
@@ -52,7 +53,7 @@ const trialSchema = {
 ---
 
 <Layout 
-  title="Testa IPTV Gratis 24 Timmar — Prova Sveriges Bästa IPTV 2026" 
+  title={`Testa IPTV Gratis 24 Timmar — Prova Sveriges Bästa IPTV ${CURRENT_YEAR}`} 
   description="Vill du testa IPTV gratis i 24 timmar? Få ett kostnadsfritt testkonto med 4K streaming, direktsänd sport i 60 FPS och svensk EPG. Aktivering inom 3 min via WhatsApp!"
   schema={trialSchema}
   breadcrumbItems={breadcrumbs}

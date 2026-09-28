@@ -20,6 +20,7 @@ import GroupsPopup from "../components/GroupsPopup.astro";
 import ExitPopup from "../components/ExitPopup.astro";
 import SocialPopup from "../components/SocialPopup.astro";
 import { DollarSign, ShieldCheck, Check, Sparkles, TrendingDown, ArrowRight, Zap } from "lucide-astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" },
@@ -52,7 +53,7 @@ const cheapProductSchema = {
 ---
 
 <Layout 
-  title="Billig IPTV Sverige 2026 — Bästa Prisvärda Abonnemang från 50 kr/mån" 
+  title={`Billig IPTV Sverige ${CURRENT_YEAR} — Bästa Prisvärda Abonnemang från 50 kr/mån`} 
   description="Letar du efter billig IPTV i Sverige utan att kompromissa med kvalitet? Njut av 4K streaming, direktsänd sport i 60 FPS och svensk EPG från endast 50 kr/månad!"
   schema={cheapProductSchema}
   breadcrumbItems={breadcrumbs}
@@ -75,7 +76,7 @@ const cheapProductSchema = {
         <div class="text-center space-y-3">
           <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             <TrendingDown class="w-4 h-4" />
-            <span>Ekonomisk Kalkyl 2026</span>
+            <span>Ekonomisk Kalkyl <span data-dynamic-year>{CURRENT_YEAR}</span></span>
           </div>
           <h2 class="text-2xl sm:text-3xl font-black text-white font-display">
             Hur Mycket Sparar Du Med <span class="text-gradient-emerald">IPTV Sverige?</span>

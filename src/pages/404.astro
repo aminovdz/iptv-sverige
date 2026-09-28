@@ -17,6 +17,7 @@ import {
   SignalZero,
   ShieldCheck
 } from "lucide-astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" },
@@ -117,7 +118,7 @@ const breadcrumbs = [
                 <Trophy class="w-4 h-4" />
               </div>
               <div>
-                <div class="font-bold text-white group-hover:text-emerald-300 transition-colors">Bästa IPTV Sverige 2026</div>
+                <div class="font-bold text-white group-hover:text-emerald-300 transition-colors">Bästa IPTV Sverige <span data-dynamic-year>{CURRENT_YEAR}</span></div>
                 <div class="text-[11px] text-slate-400">Se vårt stora oberoende test</div>
               </div>
             </div>

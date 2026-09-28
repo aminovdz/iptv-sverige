@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import StickyHeader from "../components/StickyHeader.astro";
 import Hero from "../components/Hero.astro";
+import LiveScores from "../components/LiveScores.astro";
 import SupportedDevices from "../components/SupportedDevices.astro";
 import PricingCard from "../components/PricingCard.astro";
 import ProcessSteps from "../components/ProcessSteps.astro";
@@ -26,6 +27,7 @@ import {
   PlayCircle,
   HelpCircle
 } from "lucide-astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" },
@@ -58,7 +60,7 @@ const howToSchema = {
 ---
 
 <Layout 
-  title="Installera IPTV på Smart TV, Apple TV & Fire Stick — Komplett Guide 2026" 
+  title={`Installera IPTV på Smart TV, Apple TV & Fire Stick — Komplett Guide ${CURRENT_YEAR}`} 
   description="Lär dig hur du enkelt installerar IPTV på Samsung TV, LG webOS, Apple TV 4K, Amazon Fire Stick, PC och iPad på 5 minuter. Steg-för-steg med Xtream Codes!"
   schema={howToSchema}
   breadcrumbItems={breadcrumbs}
@@ -69,9 +71,11 @@ const howToSchema = {
   <Hero 
     h1Title="Installera IPTV på Smart TV, Apple TV & Mobil — Kom Igång På 5 Minuter"
     subtitle="Enkel steg-för-steg installationsguide för alla dina enheter. Följ våra instruktioner för Samsung, LG, Android TV, Fire Stick, Apple TV och dator."
-    badgeText="🛠️ ENKEL INSTALLATIONSGUIDE 2026"
+    badgeText={`🛠️ ENKEL INSTALLATIONSGUIDE ${CURRENT_YEAR}`}
     primaryKeyword="Installera IPTV"
   />
+
+  <LiveScores />
 
   <!-- Interactive Device Setup Tabs Section -->
   <section class="py-16 relative overflow-hidden" id="device-guides">

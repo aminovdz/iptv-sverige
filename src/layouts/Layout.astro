@@ -127,5 +127,15 @@ const breadcrumbSchema = {
 
     <!-- Global Floating Widgets Slot -->
     <slot name="widgets" />
+
+    <!-- Automatic Year Synchronization Script -->
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const currentYear = new Date().getFullYear().toString();
+        document.querySelectorAll("[data-dynamic-year], .dynamic-year").forEach((el) => {
+          el.textContent = currentYear;
+        });
+      });
+    </script>
   </body>
 </html>

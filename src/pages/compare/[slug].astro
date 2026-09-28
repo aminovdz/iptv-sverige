@@ -10,6 +10,7 @@ import ExitPopup from "../../components/ExitPopup.astro";
 import GroupsPopup from "../../components/GroupsPopup.astro";
 import SocialPopup from "../../components/SocialPopup.astro";
 import { Check, X, ShieldCheck, Zap, Star, Trophy, Sparkles, ArrowRight } from "lucide-astro";
+import { CURRENT_YEAR } from "../../utils/date";
 
 export function getStaticPaths() {
   const comparisons = [
@@ -122,7 +123,7 @@ const breadcrumbs = [
 ---
 
 <Layout 
-  title={`IPTV Sverige vs ${compData.competitorName} (2026 Jämförelse & Test)`}
+  title={`IPTV Sverige vs ${compData.competitorName} (${CURRENT_YEAR} Jämförelse & Test)`}
   description={`Ärlig och oberoende jämförelse mellan IPTV Sverige och ${compData.competitorName}. Se priser, bildkvalitet i 4K, stabilitet och support.`}
   breadcrumbItems={breadcrumbs}
 >
@@ -135,7 +136,7 @@ const breadcrumbs = [
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
         <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
           <Trophy class="w-3.5 h-3.5 text-amber-400" />
-          <span>Oberoende Svensk Jämförelse 2026</span>
+          <span>Oberoende Svensk Jämförelse <span data-dynamic-year>{CURRENT_YEAR}</span></span>
         </div>
 
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-tight">

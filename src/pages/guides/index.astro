@@ -6,6 +6,7 @@ import FloatingWhatsApp from "../../components/FloatingWhatsApp.astro";
 import CTASection from "../../components/CTASection.astro";
 import { getCollection } from "astro:content";
 import { BookOpen, Clock, User, Calendar, ArrowRight, Sparkles, Tag } from "lucide-astro";
+import { CURRENT_YEAR } from "../../utils/date";
 
 // Fetch all guides sorted by date
 let guides: any[] = [];
@@ -23,7 +24,7 @@ const breadcrumbs = [
 ---
 
 <Layout 
-  title="IPTV Guider & Blogg — Allt Om Svensk IPTV, Appar & Juridik 2026" 
+  title={`IPTV Guider & Blogg — Allt Om Svensk IPTV, Appar & Juridik ${CURRENT_YEAR}`} 
   description="Läs Sveriges mest heltäckande guider om IPTV. Lär dig om IPTV böter och lagar, hur du installerar TiviMate på Smart TV och hur du får maximal bildkvalitet."
   breadcrumbItems={breadcrumbs}
 >

@@ -1,0 +1,625 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyHeader from "../components/StickyHeader.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import PricingCard from "../components/PricingCard.astro";
+import FAQSection from "../components/FAQSection.astro";
+import CTASection from "../components/CTASection.astro";
+import { CURRENT_YEAR } from "../utils/date";
+import { 
+  Activity, 
+  Play, 
+  Radio, 
+  Sparkles, 
+  Trophy, 
+  Calendar, 
+  Clock, 
+  Tv, 
+  Zap, 
+  ShieldCheck, 
+  CheckCircle2, 
+  ArrowRight,
+  Filter,
+  RefreshCw,
+  Flame,
+  Award
+} from "lucide-astro";
+
+const breadcrumbs = [
+  { name: "Hem", url: "/" },
+  { name: "Match Center & Livescore", url: "/livescore" }
+];
+
+const matchCenterSchema = {
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": `Live Score Match Center ${CURRENT_YEAR} — IPTV Sverige`,
+  "description": "Följ alla matcher i direktsändning och realtid. Live-resultat och 60 FPS 4K-sändningar för svensk fotboll, internationella toppligor, ishockey och kampsport.",
+  "organizer": {
+    "@type": "Organization",
+    "name": "IPTV Sverige",
+    "url": "https://iptv-sverige.org"
+  }
+};
+---
+
+<Layout 
+  title={`Live Score Match Center ${CURRENT_YEAR} — Streama All Live Sport i 4K & 60 FPS`}
+  description="Officiellt Match Center för svensk och europeisk sport. Följ live-resultat i realtid och se matcherna utan fördröjning i 4K UHD @ 60 FPS. Testa gratis 24 timmar!"
+  schema={matchCenterSchema}
+  breadcrumbItems={breadcrumbs}
+>
+  <StickyHeader slot="header" currentPath="/livescore" />
+
+  <!-- Match Center Hero -->
+  <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden border-b border-white/5">
+    <div class="absolute inset-0 pointer-events-none z-0">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-emerald-500/15 via-red-500/10 to-amber-500/10 rounded-full blur-[120px] -z-10"></div>
+    </div>
+
+    <div class="max-container relative z-10 text-center space-y-6">
+      
+      <!-- Live Status Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs sm:text-sm font-bold uppercase tracking-wider animate-pulse">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+        <Activity class="w-4 h-4" />
+        <span>Live Sport API • Direktuppdatering i Realtid</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight leading-[1.15]">
+        Live Score <span class="text-gradient-emerald">Match Center</span>
+      </h1>
+
+      <p class="text-sm sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+        Realtidsresultat, matchhändelser och direktsändningar. På <strong>IPTV Sverige</strong> ser du alla matcher i kristallklar <strong>4K Ultra HD med 60 bilder per sekund</strong> utan buffring eller irriterande lagg.
+      </p>
+
+      <!-- Key Benefits Strip -->
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-2 text-xs sm:text-sm text-slate-300 font-semibold">
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+          <span>Ingen sändningsfördröjning (0s Delay)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+          <span>Äkta 60 FPS Sport-strömmar</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+          <span>Anti-Freeze 9.0™ Stabilitet</span>
+        </div>
+      </div>
+
+      <!-- Quick Action CTA -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a 
+          href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20i%2024h%20för%20att%20se%20dagens%20matcher."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary py-3.5 px-8 text-sm sm:text-base font-bold shadow-xl shadow-emerald-500/25 flex items-center gap-2"
+        >
+          <Zap class="w-4 h-4" />
+          <span>Streama Matcherna Gratis i 24h</span>
+        </a>
+        <a 
+          href="/#pricing"
+          class="px-6 py-3.5 rounded-full text-sm font-bold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+        >
+          <span>Se Abonnemang från 50 kr/mån</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Match Center Board -->
+  <section class="py-12 md:py-20 relative" id="match-board">
+    <div class="max-container space-y-8">
+      
+      <!-- Top Control Bar: League Tabs + Filters -->
+      <div class="space-y-6">
+        
+        <!-- League Selector Tabs -->
+        <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          <button 
+            type="button" 
+            class="mc-league-btn active px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all shadow-md bg-emerald-500 text-slate-950 font-display"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/swe.1/scoreboard"
+            data-league="Svensk Fotboll"
+            data-type="soccer"
+          >
+            🇸🇪 Svensk Fotboll
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard"
+            data-league="Engelsk Fotboll"
+            data-type="soccer"
+          >
+            🏴󠁧󠁢󠁥󠁮󠁧󠁿 Engelsk Fotboll
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/scoreboard"
+            data-league="Europa Fotboll"
+            data-type="soccer"
+          >
+            🏆 Champions & Europa
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/scoreboard"
+            data-league="Spansk Fotboll"
+            data-type="soccer"
+          >
+            🇪🇸 Spansk Fotboll
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/scoreboard"
+            data-league="Italiensk Fotboll"
+            data-type="soccer"
+          >
+            🇮🇹 Italiensk Fotboll
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard"
+            data-league="Tysk Fotboll"
+            data-type="soccer"
+          >
+            🇩🇪 Tysk Fotboll
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
+            data-league="Ishockey"
+            data-type="hockey"
+          >
+            🏒 Ishockey (NHL &amp; Elit)
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
+            data-league="Basket"
+            data-type="basketball"
+          >
+            🏀 Basket (NBA)
+          </button>
+
+          <button 
+            type="button" 
+            class="mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20"
+            data-url="https://site.api.espn.com/apis/site/v2/sports/mma/ufc/scoreboard"
+            data-league="MMA &amp; Kampsport"
+            data-type="mma"
+          >
+            🥊 MMA &amp; Kampsport
+          </button>
+        </div>
+
+        <!-- Filter Sub-bar -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-slate-400 font-bold flex items-center gap-1.5">
+              <Filter class="w-3.5 h-3.5 text-emerald-400" />
+              <span>Filtrera matcher:</span>
+            </span>
+            <div class="flex items-center gap-1.5" id="status-filters">
+              <button type="button" class="status-filter-btn active px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30" data-filter="all">
+                Alla (<span id="count-all">0</span>)
+              </button>
+              <button type="button" class="status-filter-btn px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white font-semibold transition-colors" data-filter="live">
+                🔴 LIVE (<span id="count-live">0</span>)
+              </button>
+              <button type="button" class="status-filter-btn px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white font-semibold transition-colors" data-filter="upcoming">
+                Kommande (<span id="count-upcoming">0</span>)
+              </button>
+              <button type="button" class="status-filter-btn px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white font-semibold transition-colors" data-filter="finished">
+                Avslutade (<span id="count-finished">0</span>)
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 text-slate-400">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="last-updated-text">Uppdaterad nyss</span>
+            </div>
+            <button 
+              type="button" 
+              id="manual-refresh-btn"
+              class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-emerald-400 transition-colors"
+              title="Uppdatera resultat nu"
+            >
+              <RefreshCw class="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Match Cards Container -->
+      <div class="min-h-[350px]">
+        <!-- Loading Spinner -->
+        <div id="mc-loader" class="flex flex-col items-center justify-center py-20 space-y-3">
+          <div class="w-12 h-12 border-3 border-emerald-500/20 border-t-emerald-400 rounded-full animate-spin"></div>
+          <p class="text-sm text-slate-400 font-medium">Hämtar officiella sändningar och realtidsdata...</p>
+        </div>
+
+        <!-- Matches Grid -->
+        <div id="mc-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="mc-empty" class="hidden text-center py-20 rounded-3xl glass-card border border-white/10 p-8 space-y-4">
+          <Trophy class="w-12 h-12 text-slate-600 mx-auto" />
+          <h3 class="text-lg font-bold text-white">Inga matcher matchar filtret just nu</h3>
+          <p class="text-xs text-slate-400 max-w-md mx-auto">
+            Välj en annan liga eller byt filter ovan. Du kan alltid se dygnet-runt sändningar från våra sportkanaler via WhatsApp.
+          </p>
+        </div>
+      </div>
+
+      <!-- Broadcast Quality & Channel Info Banner -->
+      <div class="rounded-3xl glass-card-glow border border-emerald-500/30 p-8 shadow-2xl relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-8 space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase">
+              <Sparkles class="w-3.5 h-3.5" />
+              <span>Fullständig Sportkanal-Lista Ingår</span>
+            </div>
+            <h3 class="text-2xl font-black text-white font-display">
+              Missa Aldrig En Match — Se Allt i 4K UHD @ 60 FPS
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Trött på att betala 800-1200 kr/månad för flera olika streamingabonnemang? Hos oss ingår alla svenska och internationella sportkanaler i ett och samma paket med blixtsnabb EPG (programguide) och svenskt tal.
+            </p>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+            <a 
+              href="https://wa.me/18036582620?text=Hej!%20Jag%20vill%20testa%20IPTV%20Sverige%20gratis%20för%20att%20se%20live%20sport."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary py-3.5 px-6 text-sm font-bold shadow-lg flex items-center justify-center gap-2 text-center"
+            >
+              <Zap class="w-4 h-4" />
+              <span>Aktivera 24h Gratis Prov</span>
+            </a>
+            <a 
+              href="/#pricing"
+              class="px-6 py-3 rounded-full text-sm font-bold text-center text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+            >
+              <span>Teckna VIP (50 kr/mån)</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pricing Showcase Component -->
+  <PricingCard />
+
+  <!-- FAQ Section for Sports Streaming -->
+  <FAQSection />
+
+  <!-- Final CTA -->
+  <CTASection />
+
+  <Footer slot="footer" />
+  <FloatingWhatsApp slot="widgets" />
+</Layout>
+
+<script>
+  const loader = document.getElementById("mc-loader");
+  const grid = document.getElementById("mc-grid");
+  const emptyState = document.getElementById("mc-empty");
+  const leagueBtns = document.querySelectorAll(".mc-league-btn");
+  const filterBtns = document.querySelectorAll(".status-filter-btn");
+  const lastUpdatedEl = document.getElementById("last-updated-text");
+  const refreshBtn = document.getElementById("manual-refresh-btn");
+
+  const countAll = document.getElementById("count-all");
+  const countLive = document.getElementById("count-live");
+  const countUpcoming = document.getElementById("count-upcoming");
+  const countFinished = document.getElementById("count-finished");
+
+  let currentMatches: any[] = [];
+  let currentFilter = "all";
+  let activeUrl = "https://site.api.espn.com/apis/site/v2/sports/soccer/swe.1/scoreboard";
+  let activeType = "soccer";
+  let activeLeague = "Svensk Fotboll";
+
+  const fallbackData: Record<string, any[]> = {
+    "Svensk Fotboll": [
+      { homeTeam: "Malmö FF", awayTeam: "AIK", homeScore: "2", awayScore: "1", status: "LIVE 78'", isLive: true, isFinished: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2157.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/103.png", venue: "Eleda Stadion" },
+      { homeTeam: "Djurgårdens IF", awayTeam: "Hammarby IF", homeScore: "-", awayScore: "-", status: "Ikväll 19:10", isLive: false, isFinished: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/775.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1188.png", venue: "Tele2 Arena" },
+      { homeTeam: "IFK Göteborg", awayTeam: "IF Elfsborg", homeScore: "1", awayScore: "0", status: "Slutresultat", isLive: false, isFinished: true, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1190.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1189.png", venue: "Gamla Ullevi" },
+      { homeTeam: "BK Häcken", awayTeam: "IFK Norrköping", homeScore: "3", awayScore: "2", status: "Slutresultat", isLive: false, isFinished: true, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/776.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1191.png", venue: "Bravida Arena" },
+      { homeTeam: "Kalmar FF", awayTeam: "Halmstads BK", homeScore: "-", awayScore: "-", status: "Imorgon 15:00", isLive: false, isFinished: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1192.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/1193.png", venue: "Guldfågeln Arena" }
+    ],
+    "Engelsk Fotboll": [
+      { homeTeam: "Arsenal", awayTeam: "Chelsea", homeScore: "2", awayScore: "1", status: "LIVE 64'", isLive: true, isFinished: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/359.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/363.png", venue: "Emirates Stadium" },
+      { homeTeam: "Liverpool", awayTeam: "Manchester City", homeScore: "-", awayScore: "-", status: "Idag 17:30", isLive: false, isFinished: false, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/364.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/382.png", venue: "Anfield" },
+      { homeTeam: "Tottenham", awayTeam: "Manchester United", homeScore: "3", awayScore: "2", status: "Slutresultat", isLive: false, isFinished: true, date: new Date().toISOString(), homeLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/367.png", awayLogo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/360.png", venue: "Tottenham Stadium" }
+    ]
+  };
+
+  async function loadMatchCenter(url: string, type: string, leagueName: string) {
+    if (!loader || !grid || !emptyState) return;
+
+    loader.classList.remove("hidden");
+    grid.classList.add("hidden");
+    emptyState.classList.add("hidden");
+    grid.innerHTML = "";
+
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      const data = await response.json();
+
+      let events = data.events || [];
+      if (type === "mma" && events.length > 0) {
+        let fights: any[] = [];
+        events.forEach((e: any) => {
+          if (e.competitions) fights.push(...e.competitions);
+        });
+        events = fights;
+      }
+
+      if (events.length === 0) {
+        currentMatches = fallbackData[leagueName] || fallbackData["Svensk Fotboll"];
+      } else {
+        currentMatches = events.map((event: any) => {
+          const comp = type === "mma" ? event : (event.competitions ? event.competitions[0] : event);
+          let home: any, away: any;
+
+          if (type === "mma") {
+            home = comp.competitors ? comp.competitors[0] : null;
+            away = comp.competitors ? comp.competitors[1] : null;
+          } else {
+            home = comp.competitors ? comp.competitors.find((c: any) => c.homeAway === "home") || comp.competitors[0] : null;
+            away = comp.competitors ? comp.competitors.find((c: any) => c.homeAway === "away") || comp.competitors[1] : null;
+          }
+
+          if (!home || !away) return null;
+
+          const homeName = type === "mma" ? (home.athlete?.shortName || home.athlete?.displayName || "Kämpe 1") : (home.team?.displayName || home.team?.name || "Hemmalag");
+          const awayName = type === "mma" ? (away.athlete?.shortName || away.athlete?.displayName || "Kämpe 2") : (away.team?.displayName || away.team?.name || "Bortalag");
+
+          const homeLogo = type === "mma" ? (home.athlete?.flag?.href || "") : (home.team?.logo || "");
+          const awayLogo = type === "mma" ? (away.athlete?.flag?.href || "") : (away.team?.logo || "");
+
+          const statusObj = type === "mma" ? comp.status?.type : event.status?.type;
+          const isLive = statusObj?.state === "in";
+          const isFinished = statusObj?.state === "post" || statusObj?.completed;
+          const statusDetail = statusObj?.detail || (isLive ? "LIVE" : (isFinished ? "Slutresultat" : "Kommande"));
+
+          const venue = comp.venue?.fullName || event.season?.name || "Premium Sport";
+
+          return {
+            homeTeam: homeName,
+            awayTeam: awayName,
+            homeScore: home.score !== undefined ? home.score : "-",
+            awayScore: away.score !== undefined ? away.score : "-",
+            status: statusDetail,
+            isLive: isLive,
+            isFinished: isFinished,
+            date: event.date || new Date().toISOString(),
+            homeLogo: homeLogo,
+            awayLogo: awayLogo,
+            venue: venue,
+            type: type,
+            league: leagueName
+          };
+        }).filter(Boolean);
+
+        if (currentMatches.length === 0) {
+          currentMatches = fallbackData[leagueName] || fallbackData["Svensk Fotboll"];
+        }
+      }
+    } catch (e) {
+      console.warn("Match Center fallback triggered:", e);
+      currentMatches = fallbackData[leagueName] || fallbackData["Svensk Fotboll"];
+    } finally {
+      loader.classList.add("hidden");
+      updateCounters();
+      applyFilter();
+      if (lastUpdatedEl) {
+        const now = new Date();
+        lastUpdatedEl.textContent = `Uppdaterad ${now.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" })}`;
+      }
+    }
+  }
+
+  function updateCounters() {
+    const total = currentMatches.length;
+    const live = currentMatches.filter(m => m.isLive).length;
+    const finished = currentMatches.filter(m => m.isFinished).length;
+    const upcoming = total - live - finished;
+
+    if (countAll) countAll.textContent = String(total);
+    if (countLive) countLive.textContent = String(live);
+    if (countUpcoming) countUpcoming.textContent = String(Math.max(0, upcoming));
+    if (countFinished) countFinished.textContent = String(finished);
+  }
+
+  function applyFilter() {
+    if (!grid || !emptyState) return;
+
+    let filtered = currentMatches;
+    if (currentFilter === "live") {
+      filtered = currentMatches.filter(m => m.isLive);
+    } else if (currentFilter === "upcoming") {
+      filtered = currentMatches.filter(m => !m.isLive && !m.isFinished);
+    } else if (currentFilter === "finished") {
+      filtered = currentMatches.filter(m => m.isFinished);
+    }
+
+    if (filtered.length === 0) {
+      grid.classList.add("hidden");
+      emptyState.classList.remove("hidden");
+      return;
+    }
+
+    emptyState.classList.add("hidden");
+    grid.classList.remove("hidden");
+    grid.innerHTML = "";
+
+    filtered.forEach(m => {
+      const card = document.createElement("div");
+      card.className = "rounded-3xl p-6 bg-slate-900/90 border border-white/10 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col justify-between space-y-5 relative overflow-hidden group";
+
+      let statusBadge = "";
+      if (m.isLive) {
+        statusBadge = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/40 text-xs font-black uppercase tracking-wider animate-pulse"><span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>${m.status}</span>`;
+      } else if (m.isFinished) {
+        statusBadge = `<span class="px-3 py-1 rounded-full bg-white/5 text-slate-400 text-xs font-bold uppercase">Slutresultat</span>`;
+      } else {
+        statusBadge = `<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">${m.status}</span>`;
+      }
+
+      const formattedDate = m.date ? new Date(m.date).toLocaleDateString("sv-SE", { weekday: "short", month: "short", day: "numeric" }) : "Idag";
+      const formattedTime = m.date ? new Date(m.date).toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" }) : "";
+
+      const waMsg = encodeURIComponent(`Hej! Jag vill se ${m.homeTeam} mot ${m.awayTeam} i 4K 60FPS på IPTV Sverige.`);
+
+      card.innerHTML = `
+        <!-- Top Match Info -->
+        <div class="flex items-center justify-between text-xs pb-3 border-b border-white/10">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-mono font-bold text-[11px]">${m.league || activeLeague}</span>
+            <span class="text-slate-500">•</span>
+            <span class="text-slate-400 capitalize">${formattedDate} ${formattedTime ? `kl ${formattedTime}` : ""}</span>
+          </div>
+          ${statusBadge}
+        </div>
+
+        <!-- Venue / Tournament subtitle -->
+        <div class="text-[11px] text-slate-400 truncate -mt-2">
+          📍 ${m.venue || "Direktsändning"}
+        </div>
+
+        <!-- Scoreboard Center -->
+        <div class="grid grid-cols-5 items-center gap-2 py-3">
+          
+          <!-- Home Team -->
+          <div class="col-span-2 flex flex-col items-center text-center">
+            ${m.homeLogo ? `<img src="${m.homeLogo}" alt="${m.homeTeam}" class="w-14 h-14 object-contain mb-2 p-1.5 rounded-2xl bg-white/5 border border-white/10 shadow-sm" loading="lazy" onerror="this.style.display='none'" />` : `<div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-2">⚽</div>`}
+            <span class="text-sm font-bold text-white line-clamp-2 leading-tight">${m.homeTeam}</span>
+          </div>
+
+          <!-- Score / VS Box -->
+          <div class="col-span-1 flex flex-col items-center justify-center">
+            ${m.type === "mma" ? `
+              <span class="text-xl font-black text-amber-400 font-display">VS</span>
+            ` : `
+              <div class="text-2xl sm:text-3xl font-black font-mono tracking-tight ${m.isLive ? "text-emerald-400" : "text-white"}">
+                ${m.homeScore !== undefined && m.homeScore !== "-" ? `${m.homeScore} : ${m.awayScore}` : `<span class="text-xs font-bold text-slate-400 px-2.5 py-1 rounded bg-white/5">VS</span>`}
+              </div>
+            `}
+            <span class="text-[9px] font-black uppercase tracking-widest text-emerald-400/90 mt-1.5">60 FPS</span>
+          </div>
+
+          <!-- Away Team -->
+          <div class="col-span-2 flex flex-col items-center text-center">
+            ${m.awayLogo ? `<img src="${m.awayLogo}" alt="${m.awayTeam}" class="w-14 h-14 object-contain mb-2 p-1.5 rounded-2xl bg-white/5 border border-white/10 shadow-sm" loading="lazy" onerror="this.style.display='none'" />` : `<div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-2">⚽</div>`}
+            <span class="text-sm font-bold text-white line-clamp-2 leading-tight">${m.awayTeam}</span>
+          </div>
+
+        </div>
+
+        <!-- Stream Channel Tag -->
+        <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <Radio class="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+            <span class="text-slate-300 font-medium">Sänds på: <strong>Svensk Sport 4K</strong></span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">Ultra HD</span>
+        </div>
+
+        <!-- Action CTA -->
+        <a 
+          href="https://wa.me/18036582620?text=${waMsg}" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="w-full py-3 rounded-2xl font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-all ${m.isLive ? "bg-gradient-to-r from-red-600 to-emerald-600 text-white shadow-lg shadow-red-500/20 hover:scale-[1.02]" : "bg-white/10 hover:bg-emerald-500 hover:text-slate-950 text-white"}"
+        >
+          <Play class="w-4 h-4 fill-current" />
+          <span>${m.isLive ? "Titta Live Nu (4K 60FPS)" : "Se Sändning & Starta Test"}</span>
+        </a>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+
+  // League Buttons Event Listeners
+  leagueBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      
+      leagueBtns.forEach(b => {
+        b.className = "mc-league-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10";
+      });
+      target.className = "mc-league-btn active px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all shadow-md bg-emerald-500 text-slate-950 font-display";
+
+      activeUrl = target.getAttribute("data-url") || activeUrl;
+      activeType = target.getAttribute("data-type") || "soccer";
+      activeLeague = target.getAttribute("data-league") || "Svensk Fotboll";
+
+      loadMatchCenter(activeUrl, activeType, activeLeague);
+    });
+  });
+
+  // Filter Buttons Event Listeners
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const target = e.currentTarget as HTMLButtonElement;
+      filterBtns.forEach(b => {
+        b.className = "status-filter-btn px-3 py-1 rounded-lg bg-white/5 text-slate-400 hover:text-white font-semibold transition-colors";
+      });
+      target.className = "status-filter-btn active px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30";
+
+      currentFilter = target.getAttribute("data-filter") || "all";
+      applyFilter();
+    });
+  });
+
+  // Refresh Button
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", () => {
+      loadMatchCenter(activeUrl, activeType, activeLeague);
+    });
+  }
+
+  // Auto-refresh every 60 seconds
+  setInterval(() => {
+    loadMatchCenter(activeUrl, activeType, activeLeague);
+  }, 60000);
+
+  // Initial load
+  loadMatchCenter(activeUrl, activeType, activeLeague);
+</script>

@@ -19,6 +19,7 @@ import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import GroupsPopup from "../components/GroupsPopup.astro";
 import ExitPopup from "../components/ExitPopup.astro";
 import SocialPopup from "../components/SocialPopup.astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 const breadcrumbs = [
   { name: "Hem", url: "/" },
@@ -27,24 +28,24 @@ const breadcrumbs = [
 ---
 
 <Layout 
-  title="Bästa IPTV 2026 — Vi Har Testat och Jämfört Sveriges Bästa Tjänster" 
-  description="Vilken är Sveriges bästa IPTV 2026? Se vårt oberoende test av stabilitet, 4K bildkvalitet, direktsänd sport och support. Testa vinnaren gratis i 24h!"
+  title={`Bästa IPTV ${CURRENT_YEAR} — Vi Har Testat och Jämfört Sveriges Bästa Tjänster`} 
+  description={`Vilken är Sveriges bästa IPTV ${CURRENT_YEAR}? Se vårt oberoende test av stabilitet, 4K bildkvalitet, direktsänd sport och support. Testa vinnaren gratis i 24h!`}
   breadcrumbItems={breadcrumbs}
 >
   <StickyHeader slot="header" currentPath="/basta-iptv" />
 
   <!-- Hero with Bästa IPTV Target -->
   <Hero 
-    h1Title="Bästa IPTV 2026 — Vi Har Testat och Jämfört Sveriges Bästa Tjänster"
-    subtitle="I vårt stora svenska test av IPTV-leverantörer 2026 utsågs IPTV Sverige till vinnare i kategorierna Driftsäkerhet, 4K Bildkvalitet och Kundservice. Se varför över 15 000 svenskar väljer oss."
-    badgeText="🏆 BÄST I TEST 2026 • 4.9/5 I BETYG"
+    h1Title={`Bästa IPTV ${CURRENT_YEAR} — Vi Har Testat och Jämfört Sveriges Bästa Tjänster`}
+    subtitle={`I vårt stora svenska test av IPTV-leverantörer ${CURRENT_YEAR} utsågs IPTV Sverige till vinnare i kategorierna Driftsäkerhet, 4K Bildkvalitet och Kundservice. Se varför över 15 000 svenskar väljer oss.`}
+    badgeText={`🏆 BÄST I TEST ${CURRENT_YEAR} • 4.9/5 I BETYG`}
     primaryKeyword="Bästa IPTV"
   />
 
   <div class="max-container my-8">
     <img 
       src="/images/basta-iptv-test-banner.svg" 
-      alt="Bästa IPTV Sverige 2026 testvinnare och jämförelse av abonnemang" 
+      alt={`Bästa IPTV Sverige ${CURRENT_YEAR} testvinnare och jämförelse av abonnemang`} 
       class="w-full rounded-3xl border border-amber-500/30 shadow-2xl"
       loading="lazy"
       width="900"

@@ -1,5 +1,6 @@
 ---
 import { Play, ShieldCheck, Zap, Star, CheckCircle, Flame, ArrowRight, Tv, Radio, Sparkles } from "lucide-astro";
+import { CURRENT_YEAR } from "../utils/date";
 
 interface Props {
   h1Title?: string;
@@ -12,7 +13,7 @@ interface Props {
 const {
   h1Title = "IPTV Sverige — Streama Svensk TV & Sport i Kristallklar 4K & 8K",
   subtitle = "Upptäck Sveriges mest stabila IPTV-tjänst med 99.9% drifttid. Njut av direktsänd sport, direktsänd sport, film och alla svenska favoriter utan buffring eller bindningstid.",
-  badgeText = "🇸🇪 Sveriges #1 IPTV-Tjänst 2026",
+  badgeText = `🇸🇪 Sveriges #1 IPTV-Tjänst ${CURRENT_YEAR}`,
   city,
   primaryKeyword = "IPTV Sverige"
 } = Astro.props;

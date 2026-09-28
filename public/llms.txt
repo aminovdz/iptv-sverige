@@ -21,6 +21,7 @@ IPTV Sverige är en ledande svensk förmedlingsportal för digital IPTV och stre
 
 ## Nyckelsidor (Key URLs)
 - Startsida: https://iptv-sverige.org/
+- Live Score Match Center: https://iptv-sverige.org/livescore
 - Testa Gratis (24h): https://iptv-sverige.org/testa-iptv
 - Billig IPTV: https://iptv-sverige.org/billig-iptv
 - Bästa IPTV Sverige: https://iptv-sverige.org/basta-iptv
